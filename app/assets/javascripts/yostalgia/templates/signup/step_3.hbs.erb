@@ -1,0 +1,35 @@
+<div class="modal modal-full" id="create">
+
+  <div class="signup-container step3">
+    <h1>Step 3 - Friends</h1>
+    <div class="social-signin">
+      <span>
+        <a href="#" {{action connectFacebook}} {{bind-attr class=":btn :btn-rounded :btn-facebook :icon-facebook facebookConnected:isConnected"}}>
+          {{facebookButtonText}} Facebook
+        </a>
+      </span>
+      <span>
+        <a href="#" {{action connectTwitter}} {{bind-attr class=":btn :btn-rounded :btn-twitter :icon-twitter twitterConnected:isConnected"}}>
+          {{twitterButtonText}} Twitter
+        </a>
+      </span>
+      <p>Connect with Twitter or Facebook to find friends</p>
+    </div>
+    <div class="add-friends">
+      <ul class="nav">
+        {{#if users.length}}
+          {{#each users}}
+            {{render "signupFriendList" this}}
+          {{/each}}
+        {{else}}
+          <h2>No users found</h2>
+        {{/if}}
+      </ul>
+    </div>
+    <div class="control-actions">
+      <button {{action completeStep}} class="btn btn-primary btn-rounded">
+        Let's rock!
+      </button>
+    </div>
+  </div>
+</div>

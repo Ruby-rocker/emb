@@ -1,0 +1,43 @@
+%clearfix:before,
+%clearfix:after {
+    display: table; /* 2 */
+    content: " "; /* 1 */
+}
+%clearfix:after {
+    clear: both;
+}
+
+%left-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 500px;
+  min-height: 726px;
+  width: 50%;
+  height: 100%;
+  padding-top: 74px;
+  background: $white;
+}
+.P-left-content {
+  @extend %left-content;
+}
+
+%right-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow: scroll;
+  min-width: 500px;
+  width: 50%;
+  height: 100%;
+  padding-top: 74px;
+  padding-right: 40px;
+  background: $white;
+}
+.P-right-content {
+  @extend %right-content;
+}
+
+.hidden {
+  display: none;
+}

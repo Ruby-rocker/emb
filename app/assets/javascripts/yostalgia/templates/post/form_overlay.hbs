@@ -1,0 +1,104 @@
+<div class="modal-close">
+  <a href="#" {{action close}}><i class="ss-delete"></i></a>
+</div>
+
+<div class="create-options">
+  <div class="btn-group">
+    <div class="btn btn-primary btn-rounded">{{postedAtDisplay}}</div>
+    {{#date-picker-button date=adjustedPostedAt class="btn btn-rounded btn-primary"}}
+      <i class="icon-calendar"></i>
+    {{/date-picker-button}}
+  </div>
+
+  {{#if event}}
+    <span class="posting-to">Posting to event: ‘{{event.title}}’</span>
+  {{else}}
+    <a href="#" {{action createEvent}} class="btn btn-rounded btn-primary">
+      Create Event
+    </a>
+  {{/if}}
+</div>
+
+<div class="create">
+  <div class="control-group">
+    <div class="controls">
+      {{input type="text" value=title placeholder="Title your post" class="title" autofocus="autofocus" maxlength=100}}
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      {{mentions-input
+          value=body
+          placeholder="What have you been doing?"
+          searchMethod='mentionsSearch'
+          searchResults=mentionsSearchResults
+          dropdownPosition='top'
+      }}
+      {{view Yostalgia.InputTipView validationBinding="bodyValidation"}}
+    </div>
+  </div>
+</div>
+
+<div class="create-media">
+  <ul class="nav nav-inline">
+    {{#each selectedFriends}}
+      <li class="loading-black-64 media-list-user">
+        <a href="#" {{action removeFriend this}}>
+          <i class="ss-delete"></i>
+        </a>
+        {{avatar this.profile size=140}}
+      </li>
+    {{/each}}
+    {{#each files}}
+      <li class="loading-black-64 media-list-photo">
+        <a href="#" {{action removeAttachment this}}>
+          <i class="ss-delete"></i>
+        </a>
+        {{attachmentImage this fit="crop" width="140" height="140"}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="create-actions">
+  <ul class="nav inline">
+    <li>
+      <a href="#" {{action openFriendSelectorModal availableFriends controller 'Tag'}}>
+        <i class="icon-chat"></i>
+        Tag Friends
+      </a>
+    </li>
+    <li>
+      <button {{action save}} class="btn btn-rounded" {{bind-attr disabled=submitDisabled}}>
+        <span>{{buttonText}}</span>
+      </button>
+    </li>
+    {{#if showPrivateToggle}}
+      <li>
+        <div class="create-actions__checkbox clearfix">
+          <label>Private?</label>
+          {{input type='checkbox' checked=isPrivate id='toggler'}}
+          <label for="toggler">Test</label>
+        </div>
+      </li>
+    {{/if}}
+    <li>
+      <button {{action addVlog}}>
+        <i class="icon-chat"></i>
+        <span>Post a Vlog</span>
+      </button>
+    </li>
+    <li>
+      <button {{action addVideo}}>
+        <i class="icon-chat"></i>
+        <span>Video too?</span>
+      </button>
+    </li>
+    <li>
+      {{#view Yostalgia.FilePickerInput value=files multiple=true class=''}}
+        <i class="icon-chat"></i>
+        <span>Got a snap?</span>
+      {{/view}}
+    </li>
+  </ul>
+</div>

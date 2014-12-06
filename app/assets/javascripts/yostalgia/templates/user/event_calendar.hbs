@@ -1,0 +1,50 @@
+<div class="events-header">
+  {{#link-to 'user' user.username class="slide-link"}}
+    <i class="icon-arrow-left"></i>
+  {{/link-to}}
+</div>
+<div class="events-container">
+  <div class="header-bar">
+    <div class="avatar">
+      {{#link-to 'user' user.username}}
+        {{avatar user.profile size="40"}}
+      {{/link-to}}
+    </div>
+    <div class="name">{{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}</div>
+    <div class="calendar-scroll">
+      <a href="#" class="btn btn-rounded btn-primary" {{action createEvent}}>
+        <i class="icon-write"></i>
+      </a>
+      <div class="btn-group">
+        <button class="btn btn-rounded" {{bind-attr disabled=prevNavDisabled}} {{action gotoPrevDate}}>
+          <i class="icon-arrow-left"></i>
+        </button>
+        <button class="btn" {{action gotoCurrentMonth}}>{{selectedDateDisplay}}</button>
+        <button class="btn btn-rounded right-round" {{bind-attr disabled=nextNavDisabled}} {{action gotoNextDate}}>
+          <i class="icon-arrow-right"></i>
+        </button>
+      </div>
+      {{#date-picker-button date=newDate class="datepicker-button btn"}}
+        <i class="icon-calendar"></i>
+      {{/date-picker-button}}
+    </div>
+  </div>
+
+  <div class="event-by-time event-list clearfix">
+    {{#if allEventsTimes}}
+      {{#each time in allEventsTimes}}
+        <h2 class="events-date">{{simpleDateObject time}}</h2>
+        <hr>
+        {{events-on-time time=time}}
+      {{/each}}
+    {{else}}
+      <div class="post">
+      <div class="post-description">
+        There are no events.
+        <a href="#" {{action createEvent}}>create one now?</a>
+      </div>
+      </div>
+    {{/if}}
+  </div>
+</div>
+

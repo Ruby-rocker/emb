@@ -1,0 +1,24 @@
+{{#if isMarketing}}
+  {{ partial "layout/marketing_header" }}
+{{else}}
+  {{ partial "layout/app_header" }}
+{{/if}}
+
+{{ outlet }}
+
+{{#if isMarketing}}
+  <div class="footer">
+    <footer>
+      <div class="copyright">
+        &copy;2014 Yostalgia.
+        <a href="/home/terms" {{action terms}}>Terms &amp; Conditions</a> &amp;
+        <a href="/home/privacy" {{action privacy}}>Privacy Policy</a>.
+      </div>
+    </footer>
+  </div>
+{{/if}}
+
+{{ outlet overlay }}
+{{ outlet modal }}
+
+{{view Yostalgia.AlertMessageContainerView}}

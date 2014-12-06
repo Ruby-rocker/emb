@@ -1,0 +1,66 @@
+<div class="modal-right">
+  <div class="modal-close">
+    <a href="#" {{action close}}><i class="ss-delete"></i></a>
+  </div>
+  <div class="post-cover-photo">
+    {{#if hasMedia}}
+      {{attachmentImage attachments.firstObject width="960"}}
+    {{/if}}
+  </div>
+</div>
+
+<div class="modal-left clearfix">
+  <div class="modal-content clearfix">
+    <div class="post-meta">
+      <div class="post-details">
+        <div class="post-actions">
+          <div class="post-date">
+            <i class="ss-clock"></i> {{timeago valueBinding="postedAt"}}
+            {{#if event}}
+              in {{#link-to 'event' event}}{{event.title}}{{/link-to}}
+            {{/if}}
+          </div>
+          <ul class="nav inline pull-right">
+            <li>{{universal-like-button likeable=model position='bottom'}}</li>
+            <li>
+              {{#link-to 'user_feed.posts' user.username flashbackDate class="ss-flash"}}
+                <div class="hidden">Flashback</div>
+              {{/link-to}}
+            </li>
+          </ul>
+          <div class="post-user-details clearfix">
+            <div class="post-user-photo">
+              {{#link-to 'user' user.username}}
+                {{avatar user.profile size="50"}}
+              {{/link-to}}
+            </div>
+            <div class="post-user-tagged">
+              <div class="post-user-name">
+                {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+              </div>
+              <div class="post-tagged">
+                {{#eachIndexed user in taggedUsers}}
+                  {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}{{#unless last}}, {{/unless}}
+                {{/eachIndexed}}
+              </div>
+            </div>
+          </div>
+          {{#if body}}
+            <div class="post-description">
+              {{view Yostalgia.MentionsTextView text=bodyHtml}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="comments">
+        {{#if commentsLoading}}
+          <p class="loading">loading...</p>
+        {{else}}
+          {{render 'comment.list' comments}}
+        {{/if}}
+        {{render 'comment/new' model}}
+      </div>
+    </div>
+  </div>
+</div>

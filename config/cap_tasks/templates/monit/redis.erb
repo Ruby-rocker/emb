@@ -1,0 +1,7 @@
+check process redis with pidfile <%= current_path %>/tmp/pids/sidekiq.pid
+  start program = "/sbin/start sidekiq"
+  stop program = "/sbin/stop sidekiq"
+  group redis
+
+check file dump.rdb with path /var/lib/redis/dump.rdb
+  if size > 100 MB then alert

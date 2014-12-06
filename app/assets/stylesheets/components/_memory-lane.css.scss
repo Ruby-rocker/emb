@@ -1,0 +1,120 @@
+.memory-lane {
+  position: fixed;
+  top: $top-nav-height;
+  right: 0;
+  overflow-y: auto;
+  width: $memory-lane-width;
+  @include calc(height, #{100% - #{$top-nav-height}});
+  background: rgba(255,255,255,0.4);
+  -webkit-box-shadow: -1px 0px 2px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: -1px 0px 2px 0px rgba(0, 0, 0, 0.3);
+
+  .posts {
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+    height: auto;
+
+    > ul {
+      margin: 0;
+      margin-top: 30px;
+      margin-bottom: 73px; // height of flashback button
+      padding: 0 20px;
+    }
+  }
+  .feed-item {
+    z-index: 1;
+    margin-left: 0;
+  }
+}
+
+.memory-lane__title {
+  padding: 0 20px;
+  border-bottom: 1px solid lighten(#7c7c7c, 40%);
+  h3 {
+    float: left;
+    font-size: 18px;
+    color: #7c7c7c;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  }
+}
+
+.memory-lane__profile {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.memory-lane__refresh {
+  @extend h3;
+  float: left;
+  font-size: 18px;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.memory-lane__date {
+  position: absolute;
+  right: 0;
+  display: block;
+  padding: 2px 10px;
+  border: 1px solid #eb6027;
+  border-right: none;
+  background: #ef8256;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  top: 17px;
+  font-size: 12px;
+}
+
+.memory-lane__profile__block {
+  float: left;
+  overflow: hidden;
+  width: 62px;
+  height: 62px;
+  margin-right: 10px;
+  border-radius: 5px;
+  background: white;
+  color: #7c7c7c;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.memory-lane__profile__count {
+  display: block;
+  padding-top: 12px;
+  font-weight: bold;
+  font-size: 27px;
+}
+
+.memory-lane__loading {
+  @extend .loading-white-64;
+  height: 150px;
+}
+
+.memory-lane__flashback {
+  position: fixed;
+  bottom: 0;
+  width: $memory-lane-width;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  background-color: white;
+  padding: 15px 20px;
+
+  a {
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    width: $memory-lane-width - 40px;
+    i {
+      font-size: 15px;
+      margin-right: 5px;
+    }
+  }
+}

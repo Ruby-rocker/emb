@@ -1,0 +1,34 @@
+<div class="cal-header">
+  <a href="#" {{action gotoPreviousMonth}} class="cal-prev-button">
+    <i class="icon-arrow-left"></i>
+  </a>
+  <div class="cal-header-date">
+    <span class="cal-header-month">
+      <a href="#" {{action "showMonths" target="calendar"}}>
+        {{view.headingMonth}}
+      </a>
+    </span>
+    <span class="cal-header-year">
+      <a href="#" {{action "showYears" target="calendar"}}>
+        {{view.headingYear}}
+      </a>
+    </span>
+  </div>
+  <a href="#" {{action gotoNextMonth}} class="cal-next-button">
+    <i class="icon-arrow-right"></i>
+  </a>
+</div>
+<div class="cal-body">
+  {{#each row in nonEmptyRows}}
+    <div class="cal-row">
+      {{#each cell in row}}
+        {{view dayView content=cell}}
+      {{/each}}
+    </div>
+  {{/each}}
+</div>
+<div class="cal-footer">
+  <a href="#" {{action gotoToday target="calendar"}} class="cal-today-button">
+    Today
+  </a>
+</div>

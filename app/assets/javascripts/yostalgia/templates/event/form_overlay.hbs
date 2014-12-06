@@ -1,0 +1,136 @@
+<div class="create-options">
+  <a href="#" {{action createPost}} class="btn btn-rounded btn-primary">
+    Create Post
+  </a>
+</div>
+
+<div class="create-event">
+  <div class="control-group title">
+    <div class="controls">
+      {{input type="text" value=title placeholder="Name your event" autofocus="autofocus" maxlength=100}}
+      {{#if titleValidationMessage}}
+        <i class="ss-delete"></i> {{titleValidationMessage}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      {{mentions-input
+          value=body
+          placeholder="What is it all about?"
+          searchMethod='mentionsSearch'
+          searchResults=mentionsSearchResults
+          dropdownPosition='top'
+      }}
+      {{#if bodyValidationMessage}}
+        <i class="ss-delete"></i> {{bodyValidationMessage}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="event-date-inputs">
+    <div class="control-group">
+      <div class="controls">
+        {{date-picker-input date=startTimeDate placeholder="MM/DD/YYYY"}}
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        {{input type="text" value=startTimeTime placeholder="6:00 pm"}}
+      </div>
+    </div>
+    {{#if startTimeValidationMessage}}
+      <i class="ss-delete"></i> {{startTimeValidationMessage}}
+    {{/if}}
+  </div>
+  <div class="event-date-inputs">
+    <div class="control-group">
+      <div class="controls">
+        {{date-picker-input date=endTimeDate placeholder="MM/DD/YYYY"}}
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        {{input type="text" value=endTimeTime placeholder="6:00 pm"}}
+      </div>
+    </div>
+    {{#if endTimeValidationMessage}}
+      <i class="ss-delete"></i> {{endTimeValidationMessage}}
+    {{/if}}
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      {{input type="text" value=location placeholder="Where is it?"}}
+    </div>
+  </div>
+</div>
+
+<div class="create-event-cover">
+  {{#if coverPhotoFile}}
+    <div class="photo" {{bind-attr style=view.coverImageStyle}}></div>
+  {{/if}}
+
+  <div class="modal-close">
+    <a href="#" {{action close}}><i class="ss-delete"></i></a>
+  </div>
+
+  {{#unless coverPhotoFile}}
+
+    <div class="create-event-cover__no-image">
+      <p><i class="ss-picture"></i></p>
+      <p><strong>You have not added a cover photo yet</strong></p>
+      <p>
+        {{#view Yostalgia.FilePickerLink value=coverPhotoFile}}
+          Click to add one now
+        {{/view}}
+      </p>
+    </div>
+
+    {{#if coverPhotoValidationMessage}}
+      <i class="ss-date"></i> {{coverPhotoValidationMessage}}
+    {{/if}}
+  {{/unless}}
+</div>
+
+{{#if selectedFriends}}
+  <div class="create-media">
+    <ul class="nav nav-inline">
+      {{#each selectedFriends}}
+        <li class="loading-black-28">
+          <a href="#" {{action removeFriend this}}>
+            <i class="ss-delete"></i>
+          </a>
+          {{avatar this.profile size="70"}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}
+
+
+<div class="create-actions">
+  <ul class="nav inline">
+    <li>
+      <button {{action 'openFriendSelectorModal' availableFriends controller 'Invite'}}>
+        <i class="icon-chat"></i> Invite Friends
+      </button>
+    </li>
+    <li>
+      <button {{action 'save'}} class="btn btn-rounded" {{bind-attr disabled=submitDisabled}}>
+        <span>{{buttonText}}</span>
+      </button>
+    </li>
+    <li>
+      <div class="create-actions__checkbox clearfix">
+        <label>Private?</label>
+        {{input type='checkbox' checked=isPrivate id='toggler'}}
+        <label for="toggler">Test</label>
+      </div>
+    </li>
+    <li>
+      {{#view Yostalgia.FilePickerInput value=coverPhotoFile class=''}}
+        <i class="icon-chat"></i>
+        <span>Replace cover photo</span>
+      {{/view}}
+    </li>
+  </ul>
+</div>

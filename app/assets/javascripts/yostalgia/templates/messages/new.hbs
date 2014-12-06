@@ -1,0 +1,24 @@
+<div class="conversation-container">
+  <header>
+    <span>To:</span>
+    {{user-token-input
+        selected=recipients
+        searchMethod='searchUsers'
+        searchResults=userSearchResults}}
+  </header>
+
+  <div class="conversation-body"></div>
+
+  <footer>
+    <div class="write-message">
+      <div class="control-group">
+        <div class="controls">
+          {{autosize-textarea value=body placeholder="Message"}}
+        </div>
+      </div>
+      <button {{action save}} class="btn btn-rounded" {{bind-attr disabled="submitDisabled"}}>
+        Send it!
+      </button>
+    </div>
+  </footer>
+</div>

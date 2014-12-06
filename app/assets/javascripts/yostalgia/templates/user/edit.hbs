@@ -1,0 +1,29 @@
+<div class="modal-close">
+  <a href="#" {{action close}}><i class="ss-delete dark"></i></a>
+</div>
+<div class="modal-content user-profile-edit">
+  <form class="form" {{action save on="submit"}}>
+    <div class="image-upload">
+      {{avatar model size="150" cssClass="loading-white-64"}}
+      {{#view Yostalgia.FilePickerInput value=photo.fpFile class="btn btn-rounded"}}
+        Upload Photo
+      {{/view}}
+    </div>
+    <div class="control-group pull-left">
+      <label class="control-label hidden">First Name</label>
+      <div class="controls">
+        {{input type="text" value=firstName placeholder="First Name:" maxlength=25}}
+        {{view Yostalgia.InputTipView validationBinding="firstNameValidation"}}
+      </div>
+    </div>
+    <div class="control-group pull-right">
+      <label class="control-label hidden">Last Name</label>
+      <div class="controls">
+        {{input type="text" value=lastName placeholder="Last Name:" maxlength=25}}
+        {{view Yostalgia.InputTipView validationBinding="lastNameValidation"}}
+      </div>
+    </div>
+    {{partial 'user/basic-profile-fields'}}
+  </form>
+
+</div>

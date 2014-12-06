@@ -1,0 +1,15 @@
+{{#link-to 'user' username}}
+  {{avatar profile size="80"}}
+  <div class="profile-user-details">
+    <span class="profile-user-name">{{profile.fullName}}</span>
+    {{#if profile.location}}
+      <div><i class="icon-location"></i> {{profile.location}}</div>
+    {{/if}}
+    {{#if mutualFriendCount}}
+      <div>
+        <i class="icon-users"></i>
+        {{mutualFriendCount}} {{pluralize 'mutual friend' mutualFriendCount}}
+      </div>
+    {{/if}}
+  </div>
+{{/link-to}}

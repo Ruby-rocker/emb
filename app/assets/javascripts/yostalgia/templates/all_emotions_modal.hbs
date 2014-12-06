@@ -1,0 +1,39 @@
+{{#modal-dialog action='close'}}
+  <div class="all-emotions-modal">
+    <div class="all-emotions-modal__emotions-list">
+      <ul>
+        {{#each emotions}}
+          <li {{bind-attr class='selected'}}>
+            <a href="#" {{action changeEmotion emotion}} {{bind-attr title=name}}>
+              <i {{bind-attr class=icon}}></i>
+              {{#if count}}
+                <span class="all-emotions-modal__emotions-list__count">
+                  {{count}}
+                </span>
+              {{/if}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="all-emotions-modal__users-list clearfix">
+      <ul>
+        <li class="all-emotions-modal__users-list__count">
+          <i {{bind-attr class=selectedEmotionIcon}}></i>
+          <span>{{selectedEmotionCount}}</span>
+        </li>
+        {{#each users}}
+          <li>
+            {{#link-to 'user' username}}
+              {{avatar profile size=104}}
+              <span class="all-emotions-modal__users-list__name">
+                {{profile.fullName}}
+              </span>
+            {{/link-to}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+{{/modal-dialog}}

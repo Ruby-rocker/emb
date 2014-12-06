@@ -1,0 +1,59 @@
+<div class="modal modal-full" id="login-signup">
+  <div class="modal-close">
+    <a href="#" {{action cancel}}><i class="ss-delete"></i></a>
+  </div>
+
+  <div class="signup-container step1">
+    <h1>Step 1 - Sign Up</h1>
+    <div class="social-signin">
+      <span>
+        <a href="/users/auth/facebook" class="btn btn-rounded btn-facebook icon-facebook">
+          Facebook Signup
+        </a>
+      </span>
+      <span>
+        <a href="/users/auth/twitter" class="btn btn-rounded btn-twitter icon-twitter">
+          Twitter Signup
+        </a>
+      </span>
+    </div>
+    <p class="signup-old">or signup the old school way</p>
+    <form class="form" {{action completeSignup on="submit"}}>
+      <div {{bind-attr class=":control-group emailValidation.ok:success emailValidation.failed:error"}}>
+        <label class="control-label hidden">Email</label>
+        <div class="controls">
+          {{input type="text" value=email placeholder="Email:"}}
+          {{view Yostalgia.InputTipView validationBinding="emailValidation"}}
+        </div>
+      </div>
+      <div {{bind-attr class=":control-group fullnameValidation.ok:success fullnameValidation.failed:error"}}>
+        <label class="control-label hidden">Name</label>
+        <div class="controls">
+          {{input type="text" value=fullName placeholder="Full name:"}}
+          {{view Yostalgia.InputTipView validationBinding="fullnameValidation"}}
+        </div>
+      </div>
+      <div {{bind-attr class=":control-group usernameValidation.ok:success usernameValidation.failed:error"}}>
+        <label class="control-label hidden">Username</label>
+        <div class="controls">
+          {{input type="text" value=username placeholder="Username:"}}
+          {{view Yostalgia.InputTipView validationBinding="usernameValidation"}}
+        </div>
+      </div>
+      <div {{bind-attr class=":control-group passwordValidation.ok:success passwordValidation.failed:error"}}>
+        <label class="control-label hidden">Password</label>
+        <div class="controls">
+          {{input type="password" value=password placeholder="Password:"}}
+          {{view Yostalgia.InputTipView validationBinding="passwordValidation"}}
+        </div>
+      </div>
+      <div class="control-actions">
+        {{input type="submit" value="Next Step" class="btn btn-primary btn-rounded ss-navigateright" disabled=submitDisabled }}
+        {{#if isSaving}}
+          <span class="loading">saving...</span>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+{{#link-to 'user' user.username classNames="posted-by"}}
+  <div class="posted-by-image">
+    {{avatar user.profile size="42"}}
+  </div>
+  <div class="posted-by-name">
+    {{user.profile.fullName}}
+  </div>
+{{/link-to}}
+
+<div class="post-media">
+	{{#link-to 'event' model}}
+		{{#if coverPhoto}}
+			{{attachmentImage coverPhoto width="280"}}
+		{{else}}
+			{{title}}
+		{{/if}}
+	{{/link-to}}
+</div>
+
+<div class="post-actions">
+  <div class="post-date">
+    {{simpleDateTime event.startTime}}
+    -
+    {{simpleDateTime event.endTime}}
+  </div>
+	<ul class="nav inline pull-right">
+    <li>
+      {{#link-to 'user_feed.posts' event.user.username flashbackDate class="ss-flash"}}
+        <div class="hidden">flashback</div>
+      {{/link-to}}
+    </li>
+  </ul>
+</div>

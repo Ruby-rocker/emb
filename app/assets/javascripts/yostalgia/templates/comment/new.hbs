@@ -1,0 +1,16 @@
+<div class="write-message">
+  <div class="control-group">
+    <div class="controls">
+      {{mentions-input
+          value=controller.body
+          placeholder="Comment (use @ to mention friends):"
+          searchMethod='searchUsers'
+          searchResults=userSearchResults
+          dropdownPosition='top'
+      }}
+    </div>
+  </div>
+  <button {{action save}} class="btn btn-rounded" {{bind-attr disabled="submitDisabled"}}>
+    Comment
+  </button>
+</div>

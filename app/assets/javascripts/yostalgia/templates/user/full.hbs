@@ -1,0 +1,33 @@
+<div class="modal-close">
+  <a href="#" {{action close}}><i class="ss-delete"></i></a>
+</div>
+<div class="modal-content user-profile-details-extended">
+  <div class="user-profile-details-extended__inner">
+    <div class="profile-user-sex"><i class="icon-user"></i></div>
+    <p>{{ aboutMe }}</p>
+
+    <div class="profile-user-education">
+      <i class="icon-location"></i>
+      {{#if location}}
+        {{ location }}
+      {{else}}
+        Not specified
+      {{/if}}
+    </div>
+
+    <div class="profile-user-education">
+      <i class="icon-book"></i>
+      {{#if education}}
+        {{ education }}
+      {{else}}
+        Not specified
+      {{/if}}
+    </div>
+
+    {{#if view.isCurrentUser}}
+      <a href="#" class="btn btn-rounded" {{action editProfile}}>
+        Edit your Profile
+      </a>
+    {{/if}}
+  </div>
+</div>

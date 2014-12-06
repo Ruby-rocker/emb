@@ -1,0 +1,27 @@
+{{#link-to 'event' event class="slide-link"}}
+  <i class="icon-arrow-left"></i>
+{{/link-to}}
+
+<div class="posts-container">
+
+  <div class="posts">
+    <ul id="posts" class="nav">
+      {{#each feedItem in arrangedContent}}
+        {{render "feed_item_post_create" feedItem}}
+      {{else}}
+        <li class="post">
+          <div class="post-description">
+            No-one has posted anything to this event yet.
+            {{#if canPost}}
+              <br><br>
+              Why not
+              <a href="#" {{action 'createEventPost' event}}>post one now?</a>
+            {{/if}}
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+</div>
+

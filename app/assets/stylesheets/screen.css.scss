@@ -1,0 +1,56 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "mixins/flex";
+
+// Core variables and mixins
+@import "base/variables"; // Modify this for custom colors, font-sizes, etc
+@import "base/mixins";
+
+// CSS Reset
+@import "base/reset";
+
+// Base CSS
+@import "base/type";
+@import "base/forms";
+@import "base/fonts";
+@import "base/patterns";
+
+// Grid system and page structure
+@import "layouts/marketing";
+@import "layouts/scaffolding";
+@import "layouts/layouts";
+@import "layouts/profile";
+@import "layouts/create";
+@import "layouts/newsfeed";
+@import "layouts/posts";
+@import "layouts/signup";
+@import "layouts/search";
+@import "layouts/settings";
+@import "layouts/event";
+@import "layouts/messages";
+
+// Components
+@import "components/forms";
+@import "components/nav";
+@import "components/buttons";
+@import "components/dropdown";
+@import "components/mediaboxes";
+@import "components/modal";
+@import "components/modal-dialog";
+@import "components/notifications";
+@import "components/media";
+@import "components/calendar";
+@import "components/photo-selector";
+@import "components/alert-messages";
+@import "components/token-input";
+@import "components/mentions-input";
+@import "components/universal-like";
+@import "components/all-emotions-modal";
+@import "components/memory-lane";
+@import "components/toggles";
+
+// Utility classes
+@import "base/utilities"; // Has to be last to override when necessary

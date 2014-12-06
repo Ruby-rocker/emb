@@ -1,0 +1,172 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2010;
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 2020;
+  width: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+}
+
+.modal-dialog-content {
+  position: relative;
+  outline: none;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog-header {
+  min-height: 16.428571429px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-dialog-body {
+  position: relative;
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 20px;
+}
+
+.modal-dialog-footer {
+  margin-top: 15px;
+  padding: 14px 20px 15px;
+  border-top: 1px solid #e5e5e5;
+  text-align: right;
+}
+
+.modal-dialog-footer:before,
+.modal-dialog-footer:after {
+  /* 1 */
+
+  display: table;
+  content: " ";
+  /* 2 */
+
+}
+.modal-dialog-footer:after {
+  clear: both;
+}
+.modal-dialog-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.modal-dialog-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-dialog-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .modal-dialog-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.modal-dialog-close {
+  @include opacity(20);
+  float: right;
+  color: #0088cc;
+  font-weight: bold;
+  font-size: ($baseFontSize * 1.5);
+  line-height: 1;
+
+  &:hover,
+  &:focus {
+    @include opacity(50);
+    color: #0088cc;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+button.modal-dialog-close {
+  padding: 0;
+  outline: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+
+// Friend selector modal
+
+.friend-select-list {
+  margin: 0;
+
+  li {
+    display: inline-block;
+    width: 170px;
+    margin: 5px 0 0 5px;
+    padding: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($color-brand, 30%);
+    }
+
+    input[type=checkbox] {
+      float: left;
+      height: 30px;
+      margin: 0;
+      margin-right: 7px;
+      outline: none;
+
+      &:focus {
+        -webkit-appearance: checkbox;
+      }
+    }
+
+    a {
+      display: inline-block;
+      overflow: hidden;
+      width: 139px;
+      vertical-align: middle;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    img {
+      margin-right: 5px;
+    }
+  }
+}

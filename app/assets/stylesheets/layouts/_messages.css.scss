@@ -1,0 +1,135 @@
+.message-list {
+	position: fixed;
+	top: 74px;
+	left: 0;
+	width: 50%;
+	height: calc(100% - 74px);
+	@include flexbox;
+	@include flex-direction(column);
+	@include flex-wrap(nowrap);
+	border-right: 1px solid #ccc;
+	background: $grayLighter;
+
+	> header {
+		@include flex-shrink(0);
+		padding: 15px 20px;
+		border-bottom: 1px solid #ccc;
+	}
+
+	> ul {
+		@include flex-grow(1);
+		overflow: auto;
+		min-height: 2em;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
+.message-preview {
+	position: relative;
+	display: block;
+	height: 105px;
+	padding: 20px;
+	border-bottom: 1px solid #ccc;
+	color: #333333;
+	&.active {
+		background: #fff;
+	}
+}
+.message-preview-meta {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	padding-right: 20px;
+	padding-left: 80px;
+	width: calc(100% - 40px);
+
+	.name {
+		display: inline-block;
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.time {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-size: 11px;
+	}
+	p {
+		margin: 0;
+		padding-top: 5px;
+		height: 45px;
+		overflow: hidden;
+	}
+}
+
+.conversation-container {
+	position: fixed;
+	top: 74px;
+	right: 0;
+	width: 50%;
+	height: calc(100% - 74px);
+  @include flexbox;
+  @include flex-direction(column);
+  @include flex-wrap(nowrap);
+
+	header {
+		padding: 15px;
+		@include flex-shrink(0);
+
+		> span {
+			float: left;
+			margin-right: 8px;
+			line-height: 33px;
+		}
+
+		.token-input {
+			float: left;
+		}
+	}
+
+	.conversation-body {
+		@include flex-grow(1);
+		overflow: auto;
+		min-height: 2em;
+		padding-right: 20px;
+
+		ul {
+			margin: 0;
+		}
+
+		.message-preview {
+			height: auto;
+			min-height: 105px;
+
+			&:last-of-type {
+				border-bottom: none;
+			}
+		}
+
+		.message-body {
+			margin-top: -35px;
+			margin-left: 80px;
+			word-wrap: break-word;
+		}
+	}
+
+	footer {
+		@include flex-shrink(0);
+	}
+
+	.write-message {
+		position: relative;
+		width: 100%;
+	}
+
+	button {
+		outline: none;
+	}
+}
+
+.conversation-body li.unread,
+.message-list li.unread {
+	border: 1px solid red;
+}

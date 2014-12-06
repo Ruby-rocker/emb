@@ -1,0 +1,20 @@
+{{#each arrangedContent}}
+  {{#if isCommentCreate}}
+    {{render "notification_comment_create" this}}
+  {{/if}}
+  {{#if isPostCreate}}
+    {{render "notification_post_create" this}}
+  {{/if}}
+  {{#if isMention}}
+    {{render "notification_mention" this}}
+  {{/if}}
+  {{#if isTag}}
+    {{render "notification_tag" this}}
+  {{/if}}
+{{else}}
+  {{#unless isLoadingNotifications}}
+    <li class="notification">
+      You have no notifications at the moment.
+    </li>
+  {{/unless}}
+{{/each}}

@@ -1,0 +1,9 @@
+{{#each arrangedContent itemController="comment"}}
+  {{#unless isDeleted}}
+    {{view Yostalgia.CommentView content=this}}
+  {{/unless}}
+{{else}}
+  <li class="message">
+    No comments yet...
+  </li>
+{{/each}}

@@ -1,0 +1,108 @@
+// Example component markup:
+//
+// <div class="mentions-input">
+//   <div class="mentions-input__overlay">
+//     <div>
+//       I have tagged
+//       <span>Kevin Ansfield</span>
+//     </div>
+//   </div>
+//   <textarea class="mentions-input__textarea">
+//   <div class="mentions-input__autocomplete">
+//     <ul class="mentions-input__autocomplete__list">
+//       <li class="mentions-input__autocomplete__match">
+//         <img src="" alt="">
+//         Kevin Ansfield
+//       </li>
+//       <li class="mentions-input__autocomplete__match mentions-input__autocomplete__match--active">
+//         <img src="" alt="">
+//         Kevin Bacon
+//       </li>
+//     </ul>
+//   </div>
+// </div>
+
+.mentions-input {
+  position: relative;
+}
+
+.mentions-input__textarea,
+.mentions-input__overlay {
+  position: relative;
+  display: block;
+}
+
+.mentions-input__textarea {
+  background-color: transparent;
+}
+
+.mentions-input__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: transparent;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  span {
+    background-color: #d8dfea;
+  }
+}
+
+.mentions-input__autocomplete {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  margin-top: -2px;
+  border: 1px solid #b2b2b2;
+
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background: #fff;
+
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.148438);
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.148438);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.148438);
+}
+
+.mentions-input__autocomplete__list {
+  margin: 0;
+  padding: 0;
+}
+
+.mentions-input__autocomplete__item {
+  overflow: hidden;
+  width: auto;
+  margin: 0;
+  padding: 0 5px 0 2px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+  color: #7C7C7C;
+  list-style: none;
+  text-shadow: none;
+  white-space: nowrap;
+  line-height: 26px;
+  cursor: pointer;
+
+  img {
+    float: left;
+    margin: 2px 5px 2px 0;
+  }
+}
+
+.mentions-input__autocomplete__item--selected {
+  background-color: #f2f2f2;
+}
+
+
+// .mentions-input--top makes autocomplete dropdown display above text area
+
+.mentions-input--top {
+  .mentions-input__autocomplete {
+    bottom: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+<div class="header" role="navigation">
+  <header>
+    <div class="marketing-logo"></div>
+    {{#if session.isAuthenticated }}
+      <nav>
+        {{#link-to "newsfeed" class="btn btn-primary" }} Newsfeed {{/link-to}}
+      </nav>
+    {{else}}
+      <nav class="btn-group">
+        {{#link-to "signup" class="btn btn-primary"}} Sign Up {{/link-to}}
+        {{#link-to "home.sign_in" class="btn"}} Login {{/link-to}}
+      </nav>
+    {{/if}}
+    </div>
+  </header>
+</div>

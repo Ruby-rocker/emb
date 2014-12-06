@@ -1,0 +1,131 @@
+#login-signup {
+	overflow-y: auto;
+
+	.modal-close {
+		width: 52px;
+		padding: 17px 15px 15px 15px;
+	}
+
+	input {
+		border: 0;
+	}
+}
+
+.signup-modal {
+	overflow-y: auto;
+}
+
+.signup-container, .login-container {
+	min-width: 280px;
+	max-width: 400px;
+	margin: 10% auto 0;
+	text-align: center;
+	h1 {
+		padding-bottom: 30px;
+		font-weight: normal;
+		font-size: 3.4em;
+	}
+	.forgot-password {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 10px;
+		a {
+			color: #fff;
+		}
+	}
+	&.step2 {
+		position: relative;
+		width: 600px;
+		.form {
+			float: right;
+			width: 400px;
+		}
+	}
+	.image-upload {
+		position: absolute;
+		left: -160px;
+		width: 150px;
+		img {
+			width: 150px;
+			height: 150px;
+			margin-bottom: 10px;
+			background-color: #000;
+		}
+		.btn {
+			width: 100%;
+		}
+	}
+	.add-friends {
+		height: 250px;
+		padding-bottom: 30px;
+		.add-friend {
+			position: absolute;
+			right: 0;
+			width: 32px;
+			height: 32px;
+			background: $color-brand;
+			color: #fff;
+			text-align: center;
+			font-size: 20px;
+			line-height: 1.4em;
+		}
+		.friend-name {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			padding: 5px;
+			background: rgba(0,0,0,0.8);
+			color: #fff;
+		}
+		ul {
+			position: absolute;
+			left: 0;
+			width: 3000000px;
+			li {
+				position: relative;
+				float: left;
+				width: 220px;
+				height: 220px;
+				margin: 0 10px;
+				background: #fff;
+				img {
+					width: 220px;
+					height: 220px;
+				}
+			}
+		}
+	}
+	.action-bar.sticky {
+		background: none;
+		position: relative;
+		border-top: none;
+	}
+}
+
+p.signup-old {
+	margin: 20px 0;
+}
+
+.social-signin {
+	@extend %clearfix;
+	span {
+		display: block;
+		float: left;
+		width: 50%;
+		padding-bottom: 0;
+		padding-left: 5px;
+		&:first-child {
+			padding-right: 5px;
+			padding-left: 0;
+		}
+	}
+	.btn {
+		width: 100%;
+	}
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}

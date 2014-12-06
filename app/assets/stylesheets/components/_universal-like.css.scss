@@ -1,0 +1,130 @@
+.universal-like {
+  position: relative;
+}
+
+.ss-like.is-liked:before {
+  color: rgba(239, 130, 83, 0.75) !important;
+}
+.ss-like.is-liked:hover:before {
+  color: rgba(239, 130, 83, 1) !important;
+}
+
+.universal-like__popup {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: -76px;
+  z-index: 1000;
+  width: 181px;
+  margin-bottom: 5px;
+  background-color: #333;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+
+  ul {
+    margin: 0;
+    list-style: none;
+    font-size: 0;
+    line-height: 0;
+    border-radius: 4px;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    overflow: hidden;
+  }
+
+  ul li {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    padding: 12px 0;
+    margin: 0 !important;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    &:hover {
+      background-color: #666;
+    }
+    &:nth-child(1) {
+      border-top-left-radius: 4px;
+    }
+
+    a {
+      margin: 0 !important;
+      color: white;
+    }
+
+    i {
+      display: block;
+      text-align: center;
+      font-size: 20px;
+    }
+    span {
+      display: block !important;
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+
+  li.selected {
+    background-color: #ef8253;
+
+    &:hover {
+      background-color: darken(#ef8253, 10%);
+    }
+  }
+}
+
+.universal-like--bottom {
+  .universal-like__popup {
+    top: calc(100% + 10px);
+    bottom: auto;
+
+    &:after, &:before {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    &:before {
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #000;
+      border-width: 6px;
+      margin-left: -6px;
+    }
+  }
+}
+
+.universal-like--bottom-left {
+  @extend .universal-like--bottom;
+  .universal-like__popup {
+    left: -17px;
+    &:after, &:before {
+      left: 31px;
+    }
+  }
+}
+
+.universal-like--top {
+  .universal-like__popup {
+    &:after, &:before {
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    &:after {
+      border-color: rgba(0, 0, 0, 0);
+      border-top-color: #000000;
+      border-width: 5px;
+      margin-left: -5px;
+    }
+  }
+}

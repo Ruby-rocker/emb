@@ -1,0 +1,38 @@
+<div class="header-bar">
+  <div class="avatar">
+    {{#link-to 'user' user.username}}
+      {{avatar user.profile size="40"}}
+    {{/link-to}}
+  </div>
+  <div class="name">
+    {{#link-to 'event' this}} {{title}} {{/link-to}}
+  </div>
+  <div class="pull-right">
+    {{#if canPost}}
+      <a href="#" class="btn btn-rounded btn-primary" title="Post to this event" {{action 'createEventPost' this}}>
+        <i class="icon-write"></i>
+      </a>
+    {{/if}}
+    {{#if canJoin}}
+      <a href="#" {{action joinEvent}} class="btn btn-rounded btn-primary">
+        Join Event
+      </a>
+    {{/if}}
+    {{#if canLeave}}
+      <a href="#" {{action leaveEvent}} class="btn btn-rounded btn-secondary">
+        Leave Event
+      </a>
+    {{/if}}
+
+    {{#if canInviteFriends}}
+      <a href="#" class="btn btn-rounded btn-primary" {{action 'openFriendSelectorModal' availableFriends controller 'Invite'}}>
+        Invite Friends
+      </a>
+    {{/if}}
+    {{!-- {{#if canEdit}}
+      <a href="#" class="btn btn-rounded btn-secondary">
+        <i class="icon-spanner"></i>
+      </a>
+    {{/if}} --}}
+  </div>
+</div>

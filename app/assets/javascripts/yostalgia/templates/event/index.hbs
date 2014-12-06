@@ -1,0 +1,67 @@
+<div class="event-cover-photo">
+  <div class="photo" {{bind-attr style=view.coverImageStyle}}></div>
+</div>
+
+<div class="event-info">
+  <div class="event-details">
+
+    <div class="event-content">
+      <div class="event-info-block">
+        <div class="event-date">
+          <div class="event-date-block">
+            <span class="event-day">{{startDay}}</span>
+            <span class="event-month">{{startMonth}}</span>
+          </div>
+          {{#if displayEndDate}}
+            <div class="event-date-separator">-</div>
+            <div class="event-date-block">
+              <span class="event-day">{{endDay}}</span>
+              <span class="event-month">{{endMonth}}</span>
+            </div>
+          {{/if}}
+        </div>
+        <div class="event-time">
+          <i class="ss-clock"></i>
+          {{timePeriod}}
+        </div>
+        <div class="event-location">
+          <i class="ss-location"></i>
+          {{location}}
+        </div>
+      </div>
+
+      <div class="post-description">
+        {{view Yostalgia.MentionsTextView text=bodyHtml}}
+      </div>
+    </div>
+
+    <div class="media-boxes">
+      <ul class="nav inline">
+        <li>
+          {{#link-to 'event.invitees' model class="btn btn-rounded"}}
+            <i class="ss-users"></i>
+            {{!-- <span class="count">{{invitees.length}}</span>
+            <span>Invited</span> --}}
+          {{/link-to}}
+        </li>
+        <li>
+          {{#link-to 'user' user.username}}
+            {{avatar user.profile size="100"}}
+          {{/link-to}}
+        </li>
+        {{#each invitees}}
+          <li>
+            {{#link-to 'user' this.username}}
+              {{avatar profile size="100"}}
+            {{/link-to}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+{{#link-to 'event.posts' model class="slide-link"}}
+  <i class="icon-arrow-right"></i>
+{{/link-to}}

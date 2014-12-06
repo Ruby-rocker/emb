@@ -1,0 +1,11 @@
+{{#if isLoading}}
+  <p>Loading...</p>
+{{else}}
+  <ul class="photo-selector-list">
+    {{#each arrangedContent}}
+      <li {{action 'selectPhoto' this}}>
+        {{attachmentImage this width='100' height='100' fit='crop'}}
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

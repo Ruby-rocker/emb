@@ -1,0 +1,34 @@
+<div class="modal-left">
+  <div class="modal-close">
+    <a href="#" {{action close}}><i class="ss-delete"></i></a>
+  </div>
+
+  <div class="post-cover-photo with-media-group">
+    {{attachmentImage selectedAttachment width="960" excludeHeight=true}}
+
+    <div class="media-group">
+      {{#if previousButtonActive}}
+        <a href="#" {{action previousAttachment}} class="scroll-left ss-navigateleft"></a>
+      {{/if}}
+      {{#if nextButtonActive}}
+        <a href="#" {{action nextAttachment}} class="scroll-right ss-navigateright"></a>
+      {{/if}}
+      <ul class="nav nav-inline">
+        {{#each model}}
+          <li {{bind-attr class="isSelected:active"}}>
+            <a href="#" {{action selectAttachment this}}>
+              {{attachmentImage this fit="crop" width="150" height="150" cssClass="loading-black-64"}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-right clearfix">
+  <div class="modal-content clearfix">
+    {{outlet}}
+  </div>
+</div>

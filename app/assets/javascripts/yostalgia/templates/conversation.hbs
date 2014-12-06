@@ -1,0 +1,20 @@
+<!-- header -->
+
+<!-- body -->
+<div class="conversation-body">
+  {{outlet}}
+</div>
+
+<!-- footer -->
+<footer>
+  <div class="write-message">
+    <div class="control-group">
+      <div class="controls">
+        {{autosize-textarea value=newMessageBody placeholder="Message"}}
+      </div>
+    </div>
+    <button {{action sendMessage}} class="btn btn-rounded" {{bind-attr disabled="submitDisabled"}}>
+      Send it!
+    </button>
+  </div>
+</footer>

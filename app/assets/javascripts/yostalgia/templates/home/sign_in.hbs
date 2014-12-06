@@ -1,0 +1,63 @@
+<div class="modal modal-full" id="login-signup">
+  <div class="modal-close">
+    {{#link-to 'home.index'}}<i class="ss-delete"></i>{{/link-to}}
+  </div>
+
+  <div class="login-container">
+    <h1>Login</h1>
+    <div class="social-signin">
+      <span>
+        <a href="/users/auth/facebook" class="btn btn-rounded btn-facebook icon-facebook">
+          Facebook
+        </a>
+      </span>
+      <span>
+        <a href="/users/auth/twitter" class="btn btn-rounded btn-twitter icon-twitter">
+          Twitter
+        </a>
+      </span>
+      <p>or</p>
+    </div>
+    {{#if errorMessage}}
+      <div class="alert alert-error">{{errorMessage}}</div>
+    {{/if}}
+    <form class="form" {{action 'authenticate' on="submit"}} >
+      <div {{bind-attr class=":control-group loginValidation.failed:error"}}>
+        <label class="control-label hidden">Email / Username</label>
+        <div class="controls">
+          {{input type="text" value=identification placeholder="Email or Username:" autofocus="autofocus" }}
+          {{view Yostalgia.InputTipView validationBinding="loginValidation"}}
+        </div>
+      </div>
+      <div {{bind-attr class=":control-group passwordValidation.failed:error"}}>
+        <label class="control-label hidden">Password</label>
+        <div class="controls">
+          {{input type="password" value=password placeholder="Password:" }}
+          {{view Yostalgia.InputTipView validationBinding="passwordValidation"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          {{input type="checkbox" checked=remember }}
+          Remember me
+        </label>
+      </div>
+      <div class="control-actions">
+        {{input type="submit" value="Sign In" class="btn btn-primary btn-rounded" disabled=submitDisabled }}
+        {{#if isLoading}}
+          <span class="loading">loading...</span>
+        {{/if}}
+      </div>
+    </form>
+    <div class="forgot-password">
+      {{#link-to 'home.forgotten_password'}}
+        Forgot Password?
+      {{/link-to}}
+      <br>
+      {{#link-to 'home.resend_confirmation'}}
+        Didn't receive confirmation e-mail?
+      {{/link-to}}
+    </div>
+  </div>
+
+</div>

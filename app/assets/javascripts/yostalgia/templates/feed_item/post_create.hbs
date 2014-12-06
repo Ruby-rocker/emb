@@ -1,0 +1,89 @@
+<div {{bind-attr class=":post post.hasMedia:with-media"}}>
+  {{#if displayUser}}
+    {{#link-to 'user' post.user.username class="posted-by"}}
+      <div class="posted-by-image">
+        {{avatar post.user.profile size="42"}}
+      </div>
+      <div class="posted-by-name">{{post.user.profile.fullName}}</div>
+    {{/link-to}}
+  {{/if}}
+  {{#if post.title}}
+    {{#if post.hasMedia}}
+      {{#link-to 'post' post class="post-title"}}{{post.title}}{{/link-to}}
+    {{else}}
+      <a href="#" {{action showTextPostOverlay post}} class="post-title">{{post.title}}</a>
+    {{/if}}
+  {{/if}}
+  {{#if post.hasMedia}}
+    {{#link-to 'post' post}}
+      {{attachmentImage post.attachments.firstObject width="280"}}
+    {{/link-to}}
+  {{/if}}
+  {{#if post.hasMediaGroup}}
+    <div class="media-group">
+      <ul class="nav nav-inline">
+        {{#each attachment in post.attachments}}
+          <li>
+            {{#link-to 'post.attachment' post attachment}}
+              {{attachmentImage attachment fit="crop" width="47" height="47"}}
+            {{/link-to}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+  {{#if post.body}}
+    <div class="post-description">
+      {{view Yostalgia.MentionsTextView text=truncatedBody simpleFormat=true}}
+      {{#if isTruncated}}
+        {{#if post.hasMedia}}
+          {{#link-to 'post' post class="read-more"}}read more{{/link-to}}
+        {{else}}
+          <a href="#" {{action showTextPostOverlay post}} class="read-more">read more</a>
+        {{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
+  <div class="post-actions">
+    <div class="post-date">{{post.formattedPostedAt}}</div>
+    <ul class="nav inline pull-right">
+      <li>
+        {{#if post.hasMedia}}
+          {{#link-to 'post' post classNames="ss-chat" classNameBindings="post.hasComments:has-comments"}}<span>comment</span>{{/link-to}}
+        {{else}}
+          <a href="#" {{action showTextPostOverlay post}} {{bind-attr class=":ss-chat post.hasComments:has-comments"}}><span>comment</span></a>
+        {{/if}}
+      </li>
+      <li>{{universal-like-button likeable=post}}</li>
+      <li>
+        {{#link-to 'user_feed.posts' post.user.username flashbackDate class="ss-flash"}}
+          <div class="hidden">flashback</div>
+        {{/link-to}}
+      </li>
+    </ul>
+    {{#if displayEvent}}
+      <div class="post-event-title">
+        in {{#link-to 'event' post.event}}{{post.event.title}}{{/link-to}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+{{#if post.totalLikeCount}}
+  <div class="feed-item-like-counts">
+    <ul>
+      {{#each post.formattedLikeCounts}}
+        <li>
+          <i {{bind-attr class=icon}}></i>
+          <span class="feed-item-like-counts__count">{{countText}}</span>
+          <span class="feed-item-like-counts__item">{{likeable}}</span>
+        </li>
+      {{/each}}
+      <li class="feed-item-like-counts__view-all">
+        <a href='#' {{action 'openAllEmotionsModal' post}}>
+          View all {{post.totalLikeCount}} {{pluralize 'emotion' post.totalLikeCount}}
+        </a>
+      </li>
+    </ul>
+  </div>
+{{/if}}

@@ -1,0 +1,44 @@
+.photo-selector-dialog {
+  .modal-dialog-body {
+    padding: 0;
+
+    p {
+      padding: 10px;
+    }
+  }
+
+  .selected-photo {
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
+ul.photo-selector-list {
+  margin: 10px 14px 0 14px;
+  list-style-type: none;
+  font-size: 0;
+
+  li {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+
+    img {
+    }
+
+    span {
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      padding: 2px 5px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+}

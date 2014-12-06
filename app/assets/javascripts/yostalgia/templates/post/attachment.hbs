@@ -1,0 +1,49 @@
+<div class="modal-right">
+  <div class="modal-close">
+    <a href="#" {{action 'close'}}>
+      <i class="ss-delete"></i>
+    </a>
+  </div>
+  <div class="post-cover-photo">
+    {{attachmentImage model width="960" excludeHeight=true}}
+  </div>
+</div>
+
+<div class="modal-left clearfix">
+  <div class="modal-content clearfix">
+    <div class="post-meta">
+      <div class="post-details">
+        <div class="post-actions">
+          <div class="post-date">
+            <i class="ss-clock"></i> {{timeago valueBinding="createdAt"}}
+            {{#if attachable.event}}
+              in {{#link-to 'event' attachable.event}}{{attachable.event.title}}{{/link-to}}
+            {{/if}}
+          </div>
+          <ul class="nav inline pull-right">
+            <li>{{universal-like-button likeable=model position='bottom'}}</li>
+            <li>
+              {{#link-to 'user_feed.posts' user.username flashbackDate class="ss-flash"}}
+                <div class="hidden">Flashback</div>
+              {{/link-to}}
+            </li>
+          </ul>
+          <div class="post-user-details clearfix">
+            <div class="post-user-photo">
+              {{avatar user.profile size="50"}}
+            </div>
+            <div class="post-user-tagged">
+              <div class="post-user-name">{{user.profile.fullName}}</div>
+              <div class="post-tagged"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comments">
+        {{render 'comment.list' comments}}
+        {{render 'comment/new' model}}
+      </div>
+    </div>
+  </div>
+</div>

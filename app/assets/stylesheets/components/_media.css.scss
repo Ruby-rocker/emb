@@ -1,0 +1,13 @@
+%media {
+  @extend %clearfix;
+  overflow: hidden;
+  > div {
+    float: left;
+  }
+  &:last-child {
+    overflow: hidden;
+  }
+}
+.media {
+  @extend %media;
+}

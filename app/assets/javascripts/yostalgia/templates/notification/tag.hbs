@@ -1,0 +1,20 @@
+<div class="user-photo">
+  {{avatar owner.profile size="42"}}
+</div>
+<div class="notification-meta">
+  <div class="notification-meta-title">
+    <div class="notification-meta-name pull-left">
+      {{owner.profile.fullName}}
+    </div>
+  </div>
+  <div class="notification-meta-time">
+    <i class="ss-clock"></i> {{timeago valueBinding="postedAt"}}
+  </div>
+  <div class="notification-meta-subject">
+    tagged you in their post
+
+    {{#if postText}}
+      - "{{postText}}"
+    {{/if}}
+  </div>
+</div>

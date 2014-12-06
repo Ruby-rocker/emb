@@ -1,0 +1,16 @@
+{{#link-to 'user' user.username}}{{avatar user.profile size="64"}}{{/link-to}}
+<div class="message-preview-meta">
+  <div class="name">
+    {{#link-to 'user' user.username}}
+      {{user.profile.fullName}}
+    {{/link-to}}
+  </div>
+  <div class="time">
+    <i class="ss-clock"></i>
+    {{timeago value=createdAt}}
+  </div>
+</div>
+
+<div class="message-body">
+  {{{bodyHtml}}}
+</div>

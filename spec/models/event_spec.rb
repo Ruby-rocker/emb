@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  body       :text
+#  start_time :datetime
+#  end_time   :datetime
+#  location   :string(255)
+#  is_private :boolean          default(FALSE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+require 'spec_helper'
+
+describe Event do
+  pending "add some examples to (or delete) #{__FILE__}"
+end

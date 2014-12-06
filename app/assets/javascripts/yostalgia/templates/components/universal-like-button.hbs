@@ -1,0 +1,17 @@
+<a href="#" {{action 'togglePopup'}} {{bind-attr class=":ss-like isLiked"}}>
+  <span class="hidden">{{title}}</span>
+</a>
+{{#if isPopupVisible}}
+  <div class="universal-like__popup">
+    <ul>
+      {{#each emotions}}
+        <li {{bind-attr class="selected"}}>
+          <a href="#" {{action 'selectEmotion' number}}>
+            <i {{bind-attr class=icon}}></i>
+            <span>{{name}}</span>
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

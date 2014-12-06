@@ -1,0 +1,42 @@
+{{#link-to 'user' user.username classNames="posted-by"}}
+  <div class="posted-by-image">
+    {{avatar user.profile size="42"}}
+  </div>
+  <div class="posted-by-name">
+    {{user.profile.fullName}}
+  </div>
+{{/link-to}}
+
+<div class="post-media">
+  {{#link-to 'post' model}}
+    {{attachmentImage attachments.firstObject width="280"}}
+  {{/link-to}}
+</div>
+
+
+<div class="post-description">
+  {{body}}
+</div>
+
+<div class="post-actions">
+  <div class="post-date">
+    {{formattedPostedAt}}
+  </div>
+  <ul class="nav inline pull-right">
+    <li>
+      {{#if post.hasMedia}}
+        {{#link-to 'post' post classNames="ss-chat" classNameBindings="post.hasComments:has-comments"}}<span>comment</span>{{/link-to}}
+      {{else}}
+        <a href="#" {{action showTextPostOverlay post}} {{bind-attr class=":ss-chat post.hasComments:has-comments"}}><span>comment</span></a>
+      {{/if}}
+    </li>
+    <li>
+      {{universal-like-button likeable=post}}
+    </li>
+    <li>
+      {{#link-to 'user_feed.posts' post.user.username flashbackDate class="ss-flash"}}
+          <div class="hidden">flashback</div>
+        {{/link-to}}
+    </li>
+  </ul>
+</div>

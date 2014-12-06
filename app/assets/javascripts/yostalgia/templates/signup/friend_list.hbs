@@ -1,0 +1,7 @@
+{{#if this.isSelected}}
+  <a href="#" class="add-friend" {{action 'toggleFriendFinder' this}}>-</a>
+{{else}}
+  <a href="#" class="add-friend" {{action 'toggleFriendFinder' this}}>+</a>
+{{/if}}
+<div class="friend-name">{{profile.fullName}}</div>
+{{avatar profile}}

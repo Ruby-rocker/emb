@@ -1,0 +1,113 @@
+<div class="nav-main">
+  {{#if onNewsfeed}}
+    <a href="/newsfeed" {{action reloadNewsfeed}} class="logo">Yostalgia</a>
+  {{else}}
+    {{#link-to 'index' class="logo"}}Yostalgia{{/link-to}}
+  {{/if}}
+
+  <ul class="nav inline">
+
+    {{#if session.isAuthenticated }}
+      <li {{bind-attr class="isNewPost:active"}}>
+        <a href="#" {{action createPost}}>
+          <i class="icon-write2"></i>
+          <span class="hide">New Post</span>
+        </a>
+      </li>
+      <li {{bind-attr class="isNewsfeed:active"}}>
+        {{#if onNewsfeed}}
+          <a href="/newsfeed" {{action reloadNewsfeed}}>
+            <i class="icon-newsfeed"></i>
+            <span>Newsfeed</span>
+          </a>
+        {{else}}
+          {{#link-to 'newsfeed'}}
+            <i class="icon-newsfeed"></i>
+            <span>Newsfeed</span>
+          {{/link-to}}
+        {{/if}}
+      </li>
+      <li {{bind-attr class="isProfile:active"}}>
+        {{#link-to 'user' session.user.username}}
+          <i class="icon-user"></i>
+          <span>Profile</span>
+        {{/link-to}}
+      </li>
+      <li {{bind-attr class="isMessages:active"}}>
+        {{#link-to 'messages'}}
+          <i class="icon-chat"></i>
+          {{#if unreadConversationsCount}}
+            <div class="menu-notification">{{unreadConversationsCount}}</div>
+          {{/if}}
+          <span>Messages</span>
+        {{/link-to}}
+      </li>
+      <li {{bind-attr class="notificationsShown:active"}}>
+        <a href="#" {{action showNotifications}}>
+          <i class="icon-notification"></i>
+          <span class="hide">Notifications</span>
+          {{#if notificationsCount}}
+            <div class="menu-notification">{{notificationsCount}}</div>
+          {{/if}}
+        </a>
+      </li>
+
+      {{#if isSearch}}
+        <li class="active nav-search">
+          <div class="search-form">
+            <div class="control-group">
+              <div class="controls">
+                {{!--input type="text" value=search placeholder="Search..." autofocus=true--}}
+                {{input type="text" name=q value=search placeholder="Search..." autofocus='autofocus'}}
+              </div>
+            </div>
+            {{#link-to 'search'}}
+              <i class="icon-search"></i>
+              <span class="hide">Search</span>
+            {{/link-to}}
+          </form>
+        </li>
+      {{else}}
+        <li>
+          {{#link-to 'search'}}
+            <i class="icon-search"></i>
+            <span class="hide">Search</span>
+          {{/link-to}}
+        </li>
+      {{/if}}
+
+      <li class="dropdown">
+        <a id="userDropdown" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+          {{avatar session.user.profile size="42"}}
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="userDropdown">
+          <li>
+            <a href="#" {{action showSettings}}>
+              <i class="icon-cog"></i> Account Settings
+            </a>
+          </li>
+          <!--
+          <li>
+            {{#link-to 'account.privacy'}}
+              <i class="icon-cog"></i> Privacy settings
+            {{/link-to}}
+          </li>
+          <li class="divider"></li>
+          -->
+          <li>
+            <a href="#" {{action 'invalidateSession'}}>
+              <i class="icon-cog"></i> Sign out
+            </a>
+          </li>
+        </ul>
+      </li>
+    {{else}}
+      <li>
+        {{#link-to 'home.sign_in'}}
+          <i class="icon-user"></i> Sign in
+        {{/link-to}}
+      </li>
+    {{/if}}
+  </ul>
+</div>

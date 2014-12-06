@@ -1,0 +1,7 @@
+Hey <%= @receiver.first_name %>!
+
+<%= @sender.full_name %> has just commented on your Post<% if @event %> in the event '<%= @event.title %>'<% end %>!
+
+Click the link below to check it out:
+
+<%= @url %>

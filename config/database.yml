@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  database: yostalgia_development
+  host: localhost
+  username: postgres
+  password: root
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: yostalgia_test
+  host: localhost
+  username: postgres
+  password: root
+  pool: 5
+  timeout: 5000

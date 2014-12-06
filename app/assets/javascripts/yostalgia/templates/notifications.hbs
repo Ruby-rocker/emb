@@ -1,0 +1,85 @@
+<div class="modal-left">
+  <div class="modal-content notifications">
+    <div class="modal-close">
+      <a href="#" {{action close}}><i class="ss-delete"></i></a>
+    </div>
+
+    {{#if session.user.pendingReceivedFriendships}}
+      <h3>Friend Requests</h3>
+      <ul class="nav notifications-friend-requests">
+        {{#each session.user.pendingReceivedFriendships}}
+          <li class="notification">
+            <div class="user-photo">
+              {{#link-to 'user' sender.username}}
+                {{avatar sender.profile size="42"}}
+              {{/link-to}}
+            </div>
+            <div class="notification-meta">
+              <div class="notification-meta-title">
+                <div class="notification-meta-name pull-left">
+                  {{#link-to 'user' sender.username}}{{sender.profile.fullName}}{{/link-to}}
+                </div>
+              </div>
+              <div class="notification-meta-subject">
+                {{mutualFriendsCount sender}} mutual friends
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn btn-rounded" {{action deleteFriendRequest this}} title="Delete Request">
+                  <i class="ss-delete"></i>
+                </a>
+                <a href="#" class="btn btn-rounded btn-primary" {{action acceptFriendRequest this}} title="Accept Request">
+                  <i class="icon-thumbs-up"></i>
+                </a>
+              </div>
+            </div>
+          </li>
+        {{else}}
+          <li class="notification">
+            You don't have any pending friend requests at the moment.
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+
+    {{#if pendingInvites}}
+      <h3>Event Invitations</h3>
+      <ul class="nav notifications-events">
+        {{#each pendingInvites}}
+          <li class="notification">
+            <div class="user-photo">
+              {{#link-to 'event' this.event}}
+                {{attachmentImage this.event.coverPhoto width="42" height="42" fit="crop"}}
+              {{/link-to}}
+            </div>
+            <div class="notification-meta">
+              <div class="notification-meta-title">
+                <div class="notification-meta-name pull-left">
+                  {{#link-to 'event' this.event}} {{event.title}} {{/link-to}}
+                </div>
+              </div>
+              <div class="notification-meta-subject">
+                {{event.user.profile.fullName}}
+                invited you to their event on
+                {{shortDate event.startTime short=true}}
+              </div>
+              <div class="btn-group">
+                <a href="#" class="btn btn-rounded" {{action declineInvite this}} title="I'm not going">
+                  <i class="ss-delete"></i>
+                </a>
+                <a href="#" class="btn btn-rounded btn-primary" {{action acceptInvite this}} title="I'm going">
+                  <i class="icon-thumbs-up"></i>
+                </a>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+
+    <h3>Notifications</h3>
+    {{render "notification.list" notifications}}
+    {{#if isLoadingNotifications}}
+      <p class="loading-notifications">loading...</p>
+    {{/if}}
+  </div>
+</div>

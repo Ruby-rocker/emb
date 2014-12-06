@@ -1,0 +1,27 @@
+<div class="posts-container">
+
+  <div class="posts">
+    <ul id="posts" class="nav">
+      {{#if isLoaded}}
+        {{#each filteredArrangedContent}}
+          {{#if isPostCreate}}
+            {{render "feed_item_post_create" this}}
+          {{/if}}
+          {{#if isEventCreate}}
+            {{render "feed_item_event_create" this}}
+          {{/if}}
+        {{else}}
+          <li class="post">
+            <div class="post-description">
+              There are no posts here yet. Why not
+              <a href="#" {{action createPost}}>post one now?</a>
+            </div>
+          </li>
+        {{/each}}
+      {{/if}}
+    </ul>
+  </div>
+
+</div>
+
+{{outlet memoryLane}}

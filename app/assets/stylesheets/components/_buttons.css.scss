@@ -1,0 +1,139 @@
+.btn {
+	position: relative;
+	display: inline-block;
+	height: 42px;
+	margin: 0;
+	padding: 10px 10px;
+	border: 1px solid darken($color-brand, 10%);
+	background: $color-brand;
+	color: $white;
+	vertical-align: middle;
+	cursor: pointer;
+	text-shadow: 0px 1px 0px rgba(0,0,0,0.2);
+	&:hover {
+		background: darken($color-brand, 10%);
+		color: $white;
+		text-decoration: none;
+	}
+	i {
+		display: inline-block;
+		height: 15px;
+		font-size: 22px;
+		line-height: 15px;
+	}
+	&.active {
+		background: darken($color-brand, 10%);
+		color: $white;
+		text-decoration: none;
+	}
+	&:disabled {
+		border: 1px solid darken($color-brand, 10%);
+		background: $color-brand;
+		opacity: 0.5;
+	}
+}
+.btn-rounded {
+	@include border-radius(4px);
+}
+
+.btn-group {
+	display: inline-block;
+	.btn {
+		display: block;
+		float: left;
+		margin-left: 0px;
+		border-left: 0;
+		&:first-child {
+			margin-left: 0;
+			border-left: 1px solid darken($color-brand, 10%);
+		}
+	}
+	.btn-rounded:first-child {
+		@include border-radius(4px 0 0 4px);
+	}
+	.btn-rounded:last-child {
+		@include border-radius(0 4px 4px 0);
+	}
+	&.full-width {
+		width: 100%;
+		a {
+			text-align: center;
+		}
+	}
+}
+
+.btn-primary {
+	border: 1px solid darken($color-brand, 10%);
+	background: $color-brand;
+	&:hover {
+		background: darken($color-brand, 10%);
+	}
+}
+.btn-secondary {
+	border: 1px solid darken($grayLight, 10%);
+	background: $grayLight;
+	&:hover {
+		background: darken($grayLight, 10%);
+	}
+}
+
+.btn-twitter {
+	padding-left: 42px;
+	border: 1px solid darken(#529fd7, 10%);
+	background: #529fd7;
+	&:before {
+		position: absolute;
+		top:0;
+		left:0;
+		width: 42px;
+		height: 42px;
+		padding-top: 12px;
+		text-align: center;
+		font-size: 16px;
+	}
+	&:after {
+		position: absolute;
+		top: -1px;
+		left: -1px;
+		width: 42px;
+		height: 42px;
+		border-right: 1px solid darken(#529fd7, 10%);
+		content: '';
+	}
+	&:hover {
+		background: darken(#529fd7, 10%);
+		&:after {
+			border-right: 1px solid darken(#529fd7, 20%);
+		}
+	}
+}
+.btn-facebook {
+	padding-left: 42px;
+	border: 1px solid darken(#3c5a96, 10%);
+	background: #3c5a96;
+	&:before {
+		position: absolute;
+		top:0;
+		left:0;
+		width: 42px;
+		height: 42px;
+		padding-top: 12px;
+		text-align: center;
+		font-size: 16px;
+	}
+	&:after {
+		position: absolute;
+		top: -1px;
+		left: -1px;
+		width: 42px;
+		height: 42px;
+		border-right: 1px solid darken(#3c5a96, 10%);
+		content: '';
+	}
+	&:hover {
+		background: darken(#3c5a96, 10%);
+		&:after {
+			border-right: 1px solid darken(#3c5a96, 20%);
+		}
+	}
+}

@@ -1,0 +1,29 @@
+<div class="modal modal-full" id="login-signup">
+  <div class="modal-close">
+    {{#link-to 'home.index'}}<i class="ss-delete"></i>{{/link-to}}
+  </div>
+
+  <div class="login-container">
+    <h1>Re-send Confirmation E-Mail</h1>
+    {{#unless isFinished}}
+      <p>Enter your e-mail address or username to re-send the confirmation link:</p>
+      <form class="form" {{action resendConfirmation on="submit"}} >
+        <div class="control-group">
+          <label class="control-label hidden">Email / Username</label>
+          <div class="controls">
+            {{input type="text" value=login placeholder="Email or Username:" autofocus="autofocus" }}
+          </div>
+        </div>
+        <div class="control-actions">
+          {{input type="submit" value="Re-send Confirmation Email" class="btn btn-primary btn-rounded" disabled=submitDisabled }}
+          {{#if isSaving}}
+            <span class="loading">sending...</span>
+          {{/if}}
+        </div>
+      </form>
+    {{else}}
+      <p>Great! Please check your e-mail for a confirmation link.</p>
+    {{/unless}}
+  </div>
+
+</div>

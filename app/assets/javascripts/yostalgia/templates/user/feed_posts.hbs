@@ -1,0 +1,53 @@
+{{#if isCurrentUser}}
+  <div class="create-actions__checkbox clearfix" style="float: right;">
+    <label>Private?</label>
+    {{input type='checkbox' checked=checkChecked id='toggle'}}
+    <label for="toggle">Test</label>
+  </div>
+
+  {{#if checkChecked}}
+    {{#if isExistInSearch}}
+      {{view Yostalgia.SearchCreateSearchPasswordView}}
+    {{else}}
+      {{view Yostalgia.SearchCheckPasswordView}}
+    {{/if}}
+  {{/if}}
+{{/if}}
+<div class="posts-header">
+  <div class="btn-group">
+    <button class="btn btn-rounded" {{bind-attr disabled=prevNavDisabled}} {{action gotoPrevDate}}>
+      <i class="icon-arrow-left"></i>
+    </button>
+    <div class="btn">{{selectedDateDisplay}}</div>
+    {{#date-picker-button date=newDate class="datepicker-button btn"}}
+      <i class="icon-calendar"></i>
+    {{/date-picker-button}}
+    <button class="btn btn-rounded" {{bind-attr disabled=nextNavDisabled}} {{action gotoNextDate}}>
+      <i class="icon-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<div class="posts">
+  <ul id="posts" class="nav">
+    {{#each allActivities}}
+      {{#if isPostCreate}}
+        {{render "feed_item_post_create" this}}
+      {{/if}}
+      {{#if isEventCreate}}
+        {{render "feed_item_event_create" this}}
+      {{/if}}
+    {{else}}
+      <li class="post">
+        <div class="post-description">
+          {{#if viewingSelf}}
+            There are no posts here yet.
+            Why not <a href="#" {{action createPost}}>post one now?</a>
+          {{else}}
+            {{emptyFeedText}}
+          {{/if}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

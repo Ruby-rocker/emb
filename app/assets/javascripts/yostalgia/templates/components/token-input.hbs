@@ -1,0 +1,23 @@
+<ul class="token-input__token-list" {{action 'focus' on='click'}}>
+  {{#each tokens}}
+    {{token-input-token token=this}}
+  {{/each}}
+  <li class="token-input__new-token">
+    {{token-input-input value=searchTerm}}
+  </li>
+</ul>
+
+{{#if showDropdown}}
+  <div class="token-input__dropdown">
+    {{#if message}}
+      <p class="token-input__dropdown__message">{{message}}</p>
+    {{/if}}
+    {{#if results}}
+      <ul class="token-input__dropdown__result-list">
+        {{#each results}}
+          {{token-input-result result=this}}
+        {{/each}}
+      </ul>
+    {{/if}}
+  </div>
+{{/if}}

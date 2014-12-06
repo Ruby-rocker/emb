@@ -1,0 +1,47 @@
+{{#link-to 'user' user.username class="slide-link left"}}
+  <i class="icon-arrow-left"></i>
+{{/link-to}}
+
+<div class="header-bar">
+  <div class="avatar">
+    {{#link-to 'user' user.username}}
+      {{avatar user.profile size="40"}}
+    {{/link-to}}
+  </div>
+  <div class="name">
+    {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+  </div>
+  <div class="search">
+  {{input type="search" value=searchTerm}}
+  </div>
+</div>
+
+<div class="friends">
+
+  <div class="friends-count box box-count">
+    <i class="icon-users"></i>
+    <div class="box-count__number">{{filteredContent.length}} {{pluralize 'Friend' filteredContent.length}}</div>
+  </div>
+
+  {{#each filteredContent itemController="userFriendsItem"}}
+    <div class="friend box">
+      {{#link-to 'user' username}}
+        {{avatar profile size="220"}}
+      {{/link-to}}
+      {{#if canFriend}}
+        <div class="add-friend">
+          <a href="#" title="Send friendship request" {{action addFriend}}>+</a>
+        </div>
+      {{/if}}
+      <div class="name">
+        {{#link-to 'user' username}}{{profile.fullName}}{{/link-to}}
+      </div>
+    </div>
+  {{else}}
+    {{#if searchTerm}}
+      <p class="no-friends">No friends match your search.</p>
+    {{else}}
+      <p class="no-friends">{{user.profile.fullName}} hasn't added any friends yet.</p>
+    {{/if}}
+  {{/each}}
+</div>

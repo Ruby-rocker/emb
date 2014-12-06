@@ -1,0 +1,18 @@
+<div class="modal modal-full signup-modal" id="create">
+
+  <div class="signup-container step2">
+    <h1>Step 2 - Profile</h1>
+    {{#if model}}
+      <form class="form" {{action completeStep on="submit"}}>
+        <div class="image-upload">
+          {{avatar model size="150" cssClass="loading-black-64"}}
+          {{#view Yostalgia.FilePickerInput value=photo.fpFile class="btn"}}
+            Upload Photo
+          {{/view}}
+        </div>
+        {{partial 'user/basic-profile-fields'}}
+      </form>
+    {{/if}}
+  </div>
+
+</div>

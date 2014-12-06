@@ -1,0 +1,71 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+
+// Quick floats
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+
+// Toggling content
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// Visibility
+.invisible {
+  visibility: hidden;
+}
+
+// For Affix plugin
+.affix {
+  position: fixed;
+}
+.hidden {
+  display: none;
+}
+
+// Clearing floats
+.clearfix {
+  @include clearfix();
+}
+
+// Accessible yet invisible text
+.hide-text {
+  @include hide-text();
+}
+.center-text {
+  text-align: center;
+}
+
+// Uses box-sizing mixin, so must be defined here
+.input-block-level {
+  @include input-block-level();
+}
+
+// Loading background images
+.loading-white-28 {
+  background: image-url('loading-white-28.gif') no-repeat center;
+}
+.loading-white-64 {
+  background: image-url('loading-white-64.gif') no-repeat center;
+}
+.loading-white-128 {
+  background: image-url('loading-white-128.gif') no-repeat center;
+}
+.loading-black-28 {
+  background: image-url('loading-black-28.gif') no-repeat center;
+}
+.loading-black-64 {
+  background: image-url('loading-black-64.gif') no-repeat center;
+}
+.loading-black-128 {
+  background: image-url('loading-black-128.gif') no-repeat center;
+}

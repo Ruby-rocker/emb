@@ -1,0 +1,144 @@
+#notifications_overlay {
+	height: 100%;
+
+	.modal-left {
+		overflow: scroll;
+		@include calc(height, #{100% - #{$top-nav-height}});
+		margin-top: $top-nav-height;
+		background-color: white;
+	}
+}
+.notifications {
+	overflow: auto;
+	height: auto;
+	background-color: white;
+
+	.modal-close {
+		margin-top: 74px;
+	}
+
+	h3 {
+		color: gray;
+	}
+}
+.notifications, .conversation {
+	> ul {
+		li {
+			padding: 20px;
+			background: #fff;
+			color: #666;
+			text-shadow: 0px 0px 0px #fff;
+		}
+		li.unread {
+			background: #eee;
+		}
+	}
+}
+.notification, .message {
+	@extend %clearfix;
+	min-height: 90px;
+	cursor: pointer;
+
+	> div:first-of-type {
+		position: relative;
+		float: left;
+		width: 42px;
+		padding-top: 7px;
+	}
+	> div:last-of-type {
+		position: relative;
+		float: left;
+		width: 89%;
+		padding-left: 10px;
+		color: #4e4e4e;
+	}
+	.btn-group {
+		position: absolute;
+		top: 8px;
+		right: 0;
+	}
+}
+.notifications-friend-requests, .notifications-events {
+	.notification {
+		cursor: auto;
+	}
+}
+.notification-meta-title, .message-meta-title {
+	@extend %clearfix;
+	padding: 5px 0;
+}
+.notification-meta-time {
+	position: absolute;
+	top: 5px;
+	right: 0;
+	font-size: 11px;
+}
+.notification-meta-name, .message-meta-name {
+	font-size: 20px;
+}
+
+.notification > div:last-of-type {
+	padding-right: 120px;
+}
+
+.conversation {
+	padding-bottom: 150px;
+}
+
+.write-message {
+	position: fixed;
+	bottom: 0;
+	width: 50%;
+	padding: 20px;
+	border-top: 1px solid #ccc;
+	background: #f1f1f1;
+	.control-group {
+		width: 100%;
+		margin-bottom: 0;
+		padding-right: 130px;
+		textarea {
+			overflow: auto !important;
+			max-height: 100px;
+			width: 100%;
+			height: 20px;
+			background-color: white;
+			font-size: 17px;
+			padding: 10px;
+			text-shadow: none;
+		}
+	}
+	.btn-group, > .btn {
+		right: 20px;
+		bottom: 20px; // .btn added for single buttons
+		position: absolute;
+	}
+}
+
+.notifications {
+	h3 {
+		padding: 0 20px;
+	}
+	.notification-meta-name a {
+		color: #626262;
+		&:hover {
+			color: darken(#626262, 10%);
+			text-decoration: none;
+		}
+	}
+	ul {
+		// border-top: 1px solid #eee;
+	}
+
+	.loading-notifications {
+		padding: 20px;
+		color: #999;
+		text-align: center;
+	}
+}
+
+
+.message-meta-subject {
+	a {
+		color: $color-brand;
+	}
+}

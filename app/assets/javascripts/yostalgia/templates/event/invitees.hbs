@@ -1,0 +1,93 @@
+{{#link-to 'event' event class="slide-link left"}}
+  <i class="icon-arrow-left"></i>
+{{/link-to}}
+
+<div class="friends">
+  <div class="friends-count box">
+    <i class="icon-users"></i>
+    {{numberGoing}} Going
+  </div>
+
+  <!-- event owner -->
+  <div class="friend box">
+    {{#link-to 'user' user.username}}
+      {{avatar user.profile size="220"}}
+    {{/link-to}}
+    <div class="name">
+      {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+    </div>
+  </div>
+
+  {{#each invite in acceptedInvites}}
+    <div class="friend box">
+      {{#if canUninviteFriends}}
+        <a href="#" {{action removeInvite invite}} class="remove" title="Remove invite">
+          <i class="ss-delete"></i>
+        </a>
+      {{/if}}
+      {{#with invite}}
+        {{#link-to 'user' user.username}}
+          {{avatar user.profile size="220"}}
+        {{/link-to}}
+        <div class="name">
+          {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+        </div>
+      {{/with}}
+    </div>
+  {{/each}}
+</div>
+
+{{#if pendingInvitees}}
+  <div class="friends">
+    <div class="friends-count box">
+      <i class="icon-users"></i>
+      {{pendingInvitees.length}} Pending
+    </div>
+
+    {{#each invite in pendingInvites}}
+      <div class="friend box">
+        {{#if canUninviteFriends}}
+          <a href="#" {{action removeInvite invite}} class="remove" title="Remove invite">
+            <i class="ss-delete"></i>
+          </a>
+        {{/if}}
+        {{#with invite}}
+          {{#link-to 'user' user.username}}
+            {{avatar user.profile size="220"}}
+          {{/link-to}}
+          <div class="name">
+            {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+          </div>
+        {{/with}}
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
+
+{{#if declinedInvitees}}
+  <div class="friends">
+    <div class="friends-count box">
+      <i class="icon-users"></i>
+      {{declinedInvitees.length}} Not Going
+    </div>
+
+    {{#each invite in declinedInvites}}
+      <div class="friend box">
+        {{#if canUninviteFriends}}
+          <a href="#" {{action removeInvite invite}} class="remove" title="Remove invite">
+            <i class="ss-delete"></i>
+          </a>
+        {{/if}}
+        {{#with invite}}
+          {{#link-to 'user' user.username}}
+            {{avatar user.profile size="220"}}
+          {{/link-to}}
+          <div class="name">
+            {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+          </div>
+        {{/with}}
+      </div>
+    {{/each}}
+  </div>
+{{/if}}
+

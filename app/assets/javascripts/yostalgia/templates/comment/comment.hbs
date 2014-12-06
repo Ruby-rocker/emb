@@ -1,0 +1,23 @@
+<div class="user-photo">
+  {{#link-to 'user' user.username}}
+    {{avatar user.profile size="38"}}
+  {{/link-to}}
+</div>
+<div class="message-meta">
+  <div class="message-meta-title">
+    <div class="message-meta-name pull-left">
+      {{#link-to 'user' user.username}}{{user.profile.fullName}}{{/link-to}}
+    </div>
+    <div class="message-meta-posted pull-right">
+      {{timeago valueBinding="createdAt"}}
+    </div>
+  </div>
+  <div class="message-meta-subject">
+    {{view Yostalgia.MentionsTextView text=bodyHtml}}
+  </div>
+  {{#if isOwnComment}}
+      <a href="#" class="comment-delete" {{action deleteComment}}>
+        <i class="ss-delete"></i>
+      </a>
+  {{/if}}
+</div>

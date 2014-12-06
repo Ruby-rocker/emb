@@ -1,0 +1,131 @@
+<div class="create-actions__checkbox clearfix" style="float: right;">
+    <label>Private?</label>
+    {{input type='checkbox' checked=checkChecked id='toggle'}}
+    <label for="toggle">Test</label>
+  </div>
+{{#if checkChecked}}
+  {{#if isExistInSearch}}
+    {{view Yostalgia.SearchCreateSearchPasswordView}}
+  {{else}}
+    {{view Yostalgia.SearchCheckPasswordView}}
+  {{/if}}
+{{/if}}
+
+
+{{#if queryIsBlank}}
+  <div class="search-results-users clearfix"><h2>Type to search...</h2></div>
+{{else}}
+  {{#if isAllPosts}}
+    <div class="search-results-posts clearfix">
+      <div class="password-control"><a href='#' {{action 'backToSearch'}}>Back to search results</a></div>
+      <ul id="posts-ul" class="search-results nav posts">
+        {{#each posts}}
+          {{render "searchPost" this}}
+        {{/each}}
+      </ul>
+    </div>
+  {{else}}
+    {{#if isAllEvents}}
+      <div class="search-results-posts clearfix">
+        <div class="password-control"><a href='#' {{action 'backToSearch'}}>Back to search results</a></div>
+        <ul id="posts-ul" class="search-results nav posts">
+          {{#each events}}
+            {{render "searchEvent" this}}
+          {{/each}}
+        </ul>
+      </div>
+    {{else}}
+      {{#if isAllMedias}}
+        <div class="search-results-posts clearfix">
+          <div class="password-control"><a href='#' {{action 'backToSearch'}}>Back to search results</a></div>
+          <ul id="posts-ul" class="search-results nav posts">
+            {{#each mediaPosts}}
+              {{render "searchMediaPost" this}}
+            {{/each}}
+          </ul>
+        </div>
+      {{else}}
+        {{#if isLoading}}
+          <div class="search-results-users clearfix"><h2>...</h2></div>
+        {{else}}
+          {{#if users}}
+            <div class="custom-search-results-users clearfix carousel">
+              <h2>Users ({{users.length}})</h2>
+              {{#if users}}
+                <ul class="search-records nav slides">
+                  {{#each users}}
+                    {{render "searchUser" this}}
+                  {{/each}}
+                </ul>
+              {{else}}
+                <h2>No users found</h2>
+              {{/if}}
+            </div>
+          {{/if}}
+
+          <div class="search-results-posts clearfix">
+            <div class="search-results-memories">
+              <h2>Memories ({{posts.length}})</h2>
+              {{#if posts.isPending}}
+                Searching...
+              {{else}}
+                {{#if posts.length}}
+                  <ul id="posts-ul" class="search-records nav posts">
+                    {{#each posts}}
+                      {{render "searchPost" this}}
+                    {{/each}}
+                  </ul>
+                  {{#if memoriesGreaterThanFive}}
+                    <a href='#' {{action 'findPosts'}}>Show more</a>
+                  {{/if}}
+                {{else}}
+                  <h2>No posts found</h2>
+                {{/if}}
+              {{/if}}
+            </div>
+
+            <div class="search-results-memories">
+              <h2>Photos/Videos ({{mediaPosts.length}})</h2>
+              {{#if mediaPosts.isPending}}
+                Searching...
+              {{else}}
+                {{#if mediaPosts.length}}
+                  <ul id="posts-ul" class="search-records nav posts">
+                    {{#each mediaPosts}}
+                      {{render "searchMediaPost" this}}
+                    {{/each}}
+                  </ul>
+                  {{#if mediasGreaterThanFive}}
+                    <a href='#' {{action 'findMedias'}}>Show more</a>
+                  {{/if}}
+                {{else}}
+                  <h2>No posts found with photos/videos</h2>
+                {{/if}}
+              {{/if}}
+            </div>
+
+            <div class="search-results-events">
+              <h2>Events ({{events.length}})</h2>
+              {{#if events.isPending}}
+                Searching...
+              {{else}}
+                {{#if events.length}}
+                  <ul id="posts-ul" class="nav posts">
+                    {{#each events}}
+                      {{render "searchEvent" this}}
+                    {{/each}}
+                  </ul>
+                  {{#if eventsGreaterThanFive}}
+                    <a href='#' {{action 'findEvents'}}>Show more</a>
+                  {{/if}}
+                {{else}}
+                  <h2>No events found</h2>
+                {{/if}}
+              {{/if}}
+            </div>
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+{{/if}}

@@ -1,0 +1,247 @@
+#home {
+  min-height: 393px;
+}
+.header {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  header {
+    width: 80%;
+    margin: auto;
+    padding: 30px 0;
+    @media only screen and (min-width: 480px) {
+      padding: 50px 0;
+    }
+  }
+  .marketing-logo {
+    width: 145px;
+    height: 43px;
+    margin: auto;
+    background: image-url('logo.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    @media only screen and (min-width: 480px) {
+      float: left;
+    }
+  }
+  nav {
+    display: block;
+    clear: both;
+    width: 100%;
+    padding: 20px 10% 0;
+    @media only screen and (min-width: 480px) {
+      float:right;
+      clear: none;
+      width: auto;
+      padding: 0;
+    }
+
+    a {
+      width: 50%;
+      text-align: center;
+      @media only screen and (min-width: 480px) {
+        width: auto;
+      }
+    }
+
+    a:first-child {
+      border-radius: 6px;
+    }
+  }
+  .btn-group {
+    a:first-child {
+      border-radius: 6px 0 0 6px;
+    }
+    a:last-child {
+      border-radius: 0 6px 6px 0;
+    }
+  }
+}
+
+
+
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;}
+
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img { display: block;width: 100%;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after { display: block; visibility: hidden; clear: both; height: 0;content: "."; line-height: 0;}
+html[xmlns] .slides {display: block;}
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+.flexslider {
+  .bg {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    img {
+      min-height: 480px;
+      width: 100%;
+      @media only screen and (min-height: 400px) {
+        min-width: 1280px;
+        min-height: 600px;
+      }
+    }
+  }
+  article {
+    position: absolute;
+    z-index: 10;
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 40px;
+    .message {
+      width: 100%;
+      margin: 160px auto 0;
+      padding: 15px 15px 20px;
+      background-color: rgba(0,0,0,0.65);
+      color: white;
+      text-align: center;
+      font-size: 1.4em;
+      @media only screen and (min-width: 600px) {
+        width: 80%;
+        margin-top: 220px;
+      }
+    }
+    h1 {
+      text-transform: uppercase;
+      font-size: 25px;
+      line-height: 1em;
+      @media only screen and (min-width: 600px) {
+        padding-bottom: 10px;
+        font-size: 38px;
+      }
+      @media only screen and (min-width: 960px) {
+        font-size: 42px;
+      }
+      @media only screen and (min-width: 1140px) {
+        font-size: 50px;
+      }
+      @media only screen and (min-width: 1280px) {
+        font-size: 58px;
+      }
+      @media only screen and (min-width: 1440px) {
+        font-size: 64px;
+      }
+    }
+    em {
+      font-size: 15px;
+      line-height: 1em;
+      @media only screen and (min-width: 600px) {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {
+  position: relative;
+  margin: 0;
+  background: #fff;
+  zoom: 1;
+}
+.flex-viewport {
+  max-height: 2000px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.loading .flex-viewport {max-height: 300px;}
+.flexslider .slides {zoom: 1;}
+
+.carousel li {margin-right: 5px;}
+
+
+/* Direction Nav */
+.flex-direction-nav { position: relative; z-index: 999;*height: 0;}
+.flex-direction-nav a {
+  @extend %icon-font;
+  position: absolute;
+  z-index: 999;
+  display: block;
+  margin-top: 250px;
+  color: rgba(255,255,255,0.8);
+  font-size: 28px;
+  opacity: 0;
+  cursor: pointer;
+  -webkit-transition: all .3s ease;
+  @media only screen and (min-width: 600px) {
+    margin-top: 340px;
+    font-size: 32px;
+  }
+  @media only screen and (min-width: 726px) {
+    margin-top: 300px;
+  }
+  @media only screen and (min-width: 980px) {
+    margin-top: 285px;
+    font-size: 80px;
+  }
+  &:hover {
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+  }
+}
+.flexslider .flex-next {
+  right: 6px;
+  content:'▻';
+  opacity: 0.8;
+  @media only screen and (min-width: 726px) {
+    right: 50px;
+  }
+  @media only screen and (min-width: 1280px) {
+    right: 80px;
+  }
+}
+.flexslider .flex-prev {
+  left: 6px;
+  content:'◅';
+  opacity: 0.8;
+  @media only screen and (min-width: 726px) {
+    left: 50px;
+  }
+  @media only screen and (min-width: 1280px) {
+    left: 80px;
+  }
+}
+
+
+.footer {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  margin-top: 80px;
+  padding: 0.8%;
+  background: rgba(0,0,0,1);
+  color: #fff;
+  text-align: center;
+  font-size: 0.85em;
+
+  @media only screen and (min-height: 500px) {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  a {
+    color: #fff;
+  }
+}

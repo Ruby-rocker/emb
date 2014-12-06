@@ -1,0 +1,78 @@
+.alert-message-container {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  z-index: 9999; /*must be highest element on page*/
+}
+
+.alert-message {
+  opacity: 0;
+  position: absolute;
+  right: 10px;
+  width: 300px;
+  height: 65px;
+  padding: 5px 10px 5px 45px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background-color: rgba(50, 50, 50, 0.5);
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+  box-shadow: 0px 0px 15px -5px rgb(0, 0, 0);
+  transition: opacity 0.3s ease-out, top 0.3s ease-out, right 0.3s ease-out;
+}
+
+.alert-message.success {
+  background-color: rgba(0, 120, 0, 0.5);
+  &:hover {
+    border-color: rgb(0, 120, 0);
+  }
+}
+
+.alert-message.warn {
+  background-color: rgba(180, 140, 0, 0.6);
+  &:hover {
+    border-color: rgb(180, 140, 0);
+  }
+}
+
+.alert-message.alert {
+  background-color: rgba(120, 0, 0, 0.5);
+  &:hover {
+    border-color: rgb(120, 0, 0);
+  }
+}
+
+.alert-message.is-opaque {
+  opacity: 1;
+}
+
+.alert-message:hover {
+  border-color: rgb(255, 255, 255);
+}
+
+.alert-message.closed {
+  display: none;
+}
+
+.alert-message .icon {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  font-size: 26px;
+}
+
+.alert-message .close-alert {
+  display: none;
+  position: absolute;
+  right: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.alert-message:hover .close-alert {
+  display: block;
+}

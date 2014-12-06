@@ -1,0 +1,89 @@
+<div class="memory-lane">
+  <div class="memory-lane__title clearfix">
+    <h3>Memory Lane</h3>
+    {{#unless isLoading}}
+      {{#if date}}
+        <a href="#" {{action 'refresh'}} class="memory-lane__refresh">↻</a>
+        <span class="memory-lane__date">
+          {{shortTextDate date}}
+        </span>
+      {{/if}}
+    {{/unless}}
+  </div>
+
+  {{#if isLoading}}
+    <div class="memory-lane__loading"></div>
+
+  {{else}}
+    {{#if displayProfile}}
+      <div class="memory-lane__profile clearfix">
+        <div class="memory-lane__profile__block">
+          {{#link-to 'user' user.username}}
+            {{avatar profileVersion size=62}}
+          {{/link-to}}
+        </div>
+        <div class="memory-lane__profile__block">
+          <span class='memory-lane__profile__count'>{{profileVersion.age}}</span>
+          {{pluralize 'Yr' profileVersion.age}} Old
+        </div>
+        <div class="memory-lane__profile__block">
+          <span class='memory-lane__profile__count'>{{postsCount}}</span>
+           {{pluralize 'Post' postsCount}}
+        </div>
+        <div class="memory-lane__profile__block">
+          <span class='memory-lane__profile__count'>{{eventsCount}}</span>
+          {{pluralize 'Event' eventsCount}}
+        </div>
+      </div>
+    {{/if}}
+
+    <div class="posts">
+      <ul class="nav">
+        {{#if showGeneralInfo}}
+          <li class="feed-item">
+            <div class="post">
+              <p>
+                This is your memory lane, add some friends to see random days
+                from their history so that you can reminisce and re-live those
+                magical moments!
+              </p>
+            </div>
+          </li>
+        {{/if}}
+
+        {{#if showUserHasNoContentInfo}}
+          <li class="feed-item">
+            <div class="post">
+              <p>
+                {{user.profile.firstName}} doesn't have any memories yet!
+              </p>
+              <p>
+                Once they have posted some content you'll see a random day
+                from their history displayed here so that you can reminisce
+                and re-live their magical moments.
+              </p>
+            </div>
+          </li>
+        {{/if}}
+
+        {{#each publicActivities}}
+          {{#if isPostCreate}}
+            {{render "feed_item_post_create" this}}
+          {{/if}}
+          {{#if isEventCreate}}
+            {{render "feed_item_event_create" this}}
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+
+    {{#if showFlashback}}
+      <div class="memory-lane__flashback">
+        {{#link-to 'user_feed.posts' user.username flashbackDate class="btn btn-primary"}}
+          <i class="ss-flash"></i>
+          Flashback
+        {{/link-to}}
+      </div>
+    {{/if}}
+  {{/if}}
+</div>

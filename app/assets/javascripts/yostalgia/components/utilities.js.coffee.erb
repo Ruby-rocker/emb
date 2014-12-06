@@ -1,0 +1,149 @@
+Yostalgia.Utilities =
+  emailValid: (email)->
+    # see:  http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+    re = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/
+    re.test(email)
+
+  imageUrl: (attachment, options) ->
+    return "" if attachment == null
+
+    defaults =
+      format: 'jpg'
+      quality: 70
+      fit: 'max'
+
+    options = $.extend(defaults, options)
+
+    url = if attachment.get? then attachment.get('url') else attachment.url
+    return "" if Ember.isEmpty(url)
+
+    width = if attachment.get? then attachment.get('width') else attachment.width
+    height = if attachment.get? then attachment.get('height') else attachment.height
+
+    widthIsSmaller = if (options.width? && width) then options.width < width else true
+    heightIsSmaller = if (options.height? && height) then options.height < height else true
+
+    if Yostalgia.get('isHighResDisplay') && widthIsSmaller && heightIsSmaller
+      options.width = options.width * 2
+      options.height = options.height * 2
+      options.quality = 50
+
+    imageUrl = "#{url}/convert?"
+    imageUrl += "&w=#{options.width}" if options.width
+    imageUrl += "&h=#{options.height}" if options.height
+    imageUrl += "&fit=#{options.fit}" if options.fit
+    imageUrl += "&align=#{options.align}" if options.align
+    imageUrl += "&format=#{options.format}" if options.format
+    imageUrl += "&quality=#{options.quality}" if options.quality
+    imageUrl += "&cache=true"
+    return imageUrl
+
+  avatarUrl: (profile, options) ->
+    if profile.get('photo.url')
+      defaults =
+        fit: 'crop'
+        align: 'faces'
+        width: options.size
+        height: options.size
+
+      options = $.extend(defaults, options)
+      Yostalgia.Utilities.imageUrl(profile.get('photo'), options)
+    else
+      if profile.get('isMale')
+        '<%= asset_path "default_avatar_male.png" %>'
+      else if profile.get('isFemale')
+        '<%= asset_path "default_avatar_female.png" %>'
+      else
+        '<%= asset_path "default_avatar.png" %>'
+
+  areFriends: (user1, user2) ->
+    user1friends = user1.get('friends')
+    user1friends.contains(user2)
+
+  mutualFriendIds: (user1, user2) ->
+    user1friend_ids = user1.get('_data.friends').map (friend) ->
+      friend.get 'id'
+    user2friend_ids = user2.get('_data.friends').map (friend) ->
+      friend.get 'id'
+
+    user1friend_ids.filter (friend_id) ->
+      user2friend_ids.contains(friend_id)
+
+  shortDateDisplay: (date) ->
+    suppliedDate = moment(moment(date).format('YYYY-MM-DD'))
+    suppliedDate.format('MM/DD/YYYY')
+
+  shortTextDateDisplay: (date) ->
+    suppliedDate = moment(moment(date).format('YYYY-MM-DD'))
+    suppliedDate.format('MMM DD YYYY')
+
+  simpleDateDisplay: (date) ->
+    suppliedDate = moment(moment(date).format('YYYY-MM-DD'))
+    nowDate = moment(moment().format('YYYY-MM-DD'))
+    diff = nowDate.diff(suppliedDate, 'days')
+
+    if diff == 0
+      'Today'
+    else if diff == 1
+      'Yesterday'
+    else if diff == -1
+      'Tomorrow'
+    else
+      moment(date).format('MMMM Do YYYY')
+
+  simpleMonthDisplay: (date) ->
+    suppliedDate = moment(date).format('MMMM')
+    "#{suppliedDate}"
+
+  simpleDateTimeDisplay: (date) ->
+    suppliedDate = moment(moment(date).format('YYYY-MM-DD'))
+    nowDate = moment(moment().format('YYYY-MM-DD'))
+    diff = nowDate.diff(suppliedDate, 'days')
+
+    if diff == 0
+      formattedDate = 'Today'
+    else if diff == 1
+      formattedDate = 'Yesterday'
+    else if diff == -1
+      formattedDate = 'Tomorrow'
+    else
+      formattedDate = moment(date).format('MM/DD/YYYY')
+
+    formattedTime = moment(date).format('HH:mm')
+
+    "#{formattedDate} @ #{formattedTime}"
+
+  simpleDateObjectDisplay: (date) ->
+    suppliedDate = moment(moment(date).format('YYYY-MM-DD'))
+    nowDate = moment(moment().format('YYYY-MM-DD'))
+    diff = nowDate.diff(suppliedDate, 'days')
+
+    if diff == 0
+      formattedDate = 'Today'
+    else
+      formattedDate = moment(date).format("ddd Do MMMM")
+
+    "#{formattedDate}"
+
+  truncate: (text, length, options = {}) ->
+    adjustment = 0
+    if mentions = text.match /@\[([^\]]+)\]\((\w+):(\d+)\)/g
+      mentions.forEach (mention) ->
+        parts = mention.match /@\[([^\]]+)\]\((\w+):(\d+)\)/
+        if options.plain
+          text = text.replace mention, parts[1]
+        else
+          adjustment += mention.length - parts[1].length
+
+    length = length + adjustment
+    if text && text.length > length then text.substring(0, length) + '…' else text
+
+  isTruncated: (text) ->
+    text && text.substr(text.length - 1, 1) == '…'
+
+  constructorToString: (constructor) ->
+    constructor.toString().replace('Yostalgia.', '').toLowerCase()
+
+  isToday: (date) ->
+    today = new Date()
+    date.toDateString() == today.toDateString()

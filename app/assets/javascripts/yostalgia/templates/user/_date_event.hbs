@@ -1,0 +1,31 @@
+<li class="event-list__item with-media">
+  <div class="image">
+    {{#if event.data.isPrivate}}
+      <div class="post-protected btn">
+        <i class="icon-lock"></i>
+      </div>
+    {{/if}}
+    {{#link-to 'event' event}}
+      {{attachmentImage event.data.coverPhoto width="250" height="250"}}
+    {{/link-to}}
+  </div>
+  <div style="margin-left:45%;">
+    <div class="event-location events-title">
+      {{event.data.title}}
+    </div>
+    
+    <ul class="nav event-list__item__meta">
+      {{#if event.data.location}}
+        <li class="event-location">
+          <i class="ss-clock"></i> {{event.data.location}}
+        </li>
+      {{/if}}
+      <li>
+        <i class="ss-clock"></i> {{simpleDateTime event.data.startTime}}
+      </li>
+      <li>
+        <i class="ss-clock"></i> {{event.data.user.profile.fullName}}
+      </li>
+    </ul>
+  </div>
+</li>

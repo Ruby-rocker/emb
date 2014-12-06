@@ -1,0 +1,9 @@
+{{#if arrangedContent}}
+  <ul>
+    {{#each arrangedContent}}
+      {{render 'conversationMessage' this}}
+    {{/each}}
+  </ul>
+{{else}}
+  <p>You have no messages yet.</p>
+{{/if}}

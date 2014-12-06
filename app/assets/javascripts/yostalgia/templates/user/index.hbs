@@ -1,0 +1,170 @@
+<div class="profile-cover-photo">
+  <div class="profile-cover-photo-actions">
+    <div class="btn-group pull-left">
+      <div class="btn btn-primary btn-rounded">{{selectedDateDisplay}}</div>
+      {{#date-picker-button date=selectedDate class="btn btn-rounded btn-primary"}}
+        <i class="icon-calendar"></i>
+      {{/date-picker-button}}
+    </div>
+    {{#if viewingSelf}}
+      <div class="btn btn-rounded pull-right" {{action changeCoverPhoto}}>
+        Change Cover Photo
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="photo" {{bind-attr style=view.coverImageStyle}}></div>
+</div>
+
+<div class="profile-info">
+
+  <div class="profile-content">
+
+    <div class="profile-top">
+      <div class="profile-meta clearfix">
+        <div class="profile-actions">
+          {{#link-to 'profile_photos.photo' model profile.photo.id class='profile-avatar'}}
+            {{avatar profile size="140"}}
+          {{/link-to}}
+          {{#if viewingSelf}}
+            <a href="#" class="btn btn-rounded btn-primary" {{action editProfile}}>
+              Edit Profile
+            </a>
+          {{else}}
+            <div class="btn-group">
+              {{#if isFriend}}
+                <a href="#" class="btn" {{action removeFriend}}>Un-Friend</a>
+              {{/if}}
+              {{#if hasPendingSentFriendship}}
+                <a href="#" class="btn">Pending</a>
+              {{/if}}
+              {{#if hasPendingReceivedFriendship}}
+                <a href="#" class="btn btn-primary" {{action acceptRequest}}>Accept</a>
+              {{/if}}
+              {{#if canFriend}}
+                <a href="#" class="btn btn-primary" {{action addFriend}}>Add Friend</a>
+              {{/if}}
+              {{#link-to 'messages.new' (query-params recipientIds=id) class="btn btn-primary"}}
+                <i class="icon-chat"></i>
+              {{/link-to}}
+            </div>
+          {{/if}}
+        </div>
+        <div class="profile-user-details">
+          <span class="profile-user-name">
+            {{ profile.fullName }}
+          </span>
+          <div>
+            <i class="ss-gift"></i>
+            {{#if profile.dateOfBirth}}
+              {{ simpleDate profile.dateOfBirth }}
+            {{else}}
+              <span class="not-specified">Not specified</span>
+            {{/if}}
+          </div>
+          <div>
+            <i class="ss-location"></i>
+            {{#if profile.location}}
+              {{ profile.location }}
+            {{else}}
+              <span class="not-specified">Not specified</span>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="profile-user-description">
+        <p>
+          {{#if profile.aboutMe}}
+            {{ truncatedAboutMe }}
+          {{else}}
+            <span class="not-specified">
+              {{profile.firstName}} hasn't written their profile yet.
+            </span>
+          {{/if}}
+          <a href="#" {{action showFull profile}}>Read More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="profile-bottom">
+      <div class="media-boxes">
+        {{#if user.friends}}
+          <div class="profile-friends clearfix">
+            <ul class="nav inline">
+              <li>
+                {{#link-to 'user.friends' content class="btn btn-primary"}}
+                  <i class="ss-users"></i>
+                  <span>Friends</span>
+                {{/link-to}}
+              </li>
+              {{#each user.friends}}
+                <li>
+                  {{#link-to 'user' username}}
+                    {{avatar profile size="100"}}
+                  {{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/if}}
+
+        {{#if showAttachments}}
+          <div class="profile-photos clearfix">
+            <ul class="nav inline">
+              <li>
+                {{#link-to 'user.photos' content class="btn btn-primary"}}
+                  <i class="ss-camera"></i>
+                  <span>Photos/Videos</span>
+                {{/link-to}}
+              </li>
+              {{#each attachments}}
+                {{#if isAttachmentPublic}}
+                  <li>
+                    {{#if isPostAttachment}}
+                      {{#link-to 'post' attachable}}
+                        {{attachmentImage this width="100" height="100" fit="crop"}}
+                      {{/link-to}}
+                    {{/if}}
+                    {{#if isProfileAttachment}}
+                      {{#link-to 'profile_photos.photo' attachable.user this.id}}
+                        {{attachmentImage this width="100" height="100" fit="crop"}}
+                      {{/link-to}}
+                    {{/if}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+        {{/if}}
+
+        {{#if showEvents}}
+          <div class="profile-events clearfix">
+            <ul class="nav inline">
+              <li>
+                {{#link-to 'user.event_calendar' user class="btn btn-primary"}}
+                  <i class="ss-checkcalendar"></i>
+                  <span>Calender</span>
+                {{/link-to}}
+              </li>
+              {{#each events}}
+                <li>
+                  {{#link-to 'event' this}}
+                    {{attachmentImage coverPhoto width="100" height="100" fit="crop"}}
+                  {{/link-to}}
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{{#if showFeedLink}}
+  {{#link-to 'user_feed' user class="slide-link"}}
+    <i class="icon-arrow-right"></i>
+  {{/link-to}}
+{{/if}}

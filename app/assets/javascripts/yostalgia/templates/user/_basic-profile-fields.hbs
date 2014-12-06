@@ -1,0 +1,50 @@
+<div class="control-group">
+  <label class="control-label hidden">Description</label>
+  <div class="controls">
+    {{textarea value=aboutMe placeholder="Description:"}}
+  </div>
+</div>
+<div class="control-group pull-left">
+  <label class="control-label hidden">Date of Birth</label>
+  <div class="controls">
+    {{date-picker-input date=dateOfBirth placeholder="Date of birth:"}}
+  </div>
+</div>
+<div class="control-group pull-right">
+  <label class="control-label hidden">Your gender</label>
+  <div class="controls">
+    <div class="btn-group full-width">
+      <a href="#" {{bind-attr class=":btn isMale:active"}} {{action changeGender 'Male'}}>
+        Male
+      </a>
+      <a href="#" {{bind-attr class=":btn isFemale:active"}} {{action changeGender 'Female'}}>
+        Female
+      </a>
+    </div>
+  </div>
+</div>
+{{view Yostalgia.InputTipView validationBinding="validationTip" class="block-tip"}}
+<div class="control-group">
+  <label class="control-label hidden">Your location</label>
+  <div class="controls">
+    {{input type="text" value=location placeholder="Your location:" maxlength=30}}
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label hidden">Your education</label>
+  <div class="controls">
+    {{input type="text" value=education placeholder="Your education:" maxlength=30}}
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label hidden">Your occupation</label>
+  <div class="controls">
+    {{input type="text" value=occupation placeholder="Your occupation:" maxlength=30}}
+  </div>
+</div>
+<div class="control-actions action-bar sticky">
+  {{input type="submit" value="Save changes" class="btn btn-primary btn-rounded" disabled=submitDisabled }}
+  {{#if isSaving}}
+    <span class="loading">saving...</span>
+  {{/if}}
+</div>

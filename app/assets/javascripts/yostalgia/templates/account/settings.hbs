@@ -1,0 +1,117 @@
+<div class="modal-close">
+  <a href="#" {{action close}}><i class="ss-delete"></i></a>
+</div>
+
+<div class="modal-content">
+  <div class="user-profile-details-extended__inner">
+    <form class="form" {{action save on="submit"}} autocomplete="off">
+      <legend>Your Details</legend>
+
+      <div class="social-signin control-group">
+        <span>
+          <a href="#" {{action toggleFacebook}} {{bind-attr class=":btn :btn-rounded :btn-facebook :icon-facebook facebookConnected:isConnected"}}>
+            {{facebookButtonText}} Facebook
+          </a>
+        </span>
+        <span>
+          <a href="#" {{action toggleTwitter}} {{bind-attr class=":btn :btn-rounded :btn-twitter :icon-twitter twitterConnected:isConnected"}}>
+            {{twitterButtonText}} Twitter
+          </a>
+        </span>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          {{input type="text" value=username id="username" placeholder="Username"}}
+          {{view Yostalgia.InputTipView validationBinding="usernameValidation"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          {{input type="text" value=email id="email" placeholder="Email" autocomplete="off"}}
+          {{view Yostalgia.InputTipView validationBinding="emailValidation"}}
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          {{input type="password" value=password id="password" placeholder="New Password" autocomplete="off"}}
+          {{view Yostalgia.InputTipView validationBinding="passwordValidation"}}
+        </div>
+      </div>
+
+      <legend>Your Notifications</legend>
+
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnFriendRequest">
+            {{input type="checkbox" checked=emailOnFriendRequest id="emailOnFriendRequest"}}
+            E-mail me when I receive a <strong>new friend request</strong>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnMessage">
+            {{input type="checkbox" checked=emailOnMessage id="emailOnMessage"}}
+            E-mail me when I receive a <strong>new message</strong>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnComment">
+            {{input type="checkbox" checked=emailOnComment id="emailOnComment"}}
+            E-mail me when someone <strong>comments on my content</strong>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnEventInvite">
+            {{input type="checkbox" checked=emailOnEventInvite id="emailOnEventInvite"}}
+            E-mail me when I receive an <strong>event invite</strong>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnEventPost">
+            {{input type="checkbox" checked=emailOnEventPost id="emailOnEventPost"}}
+            E-mail me when someone <strong>posts in my events</strong>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnMention">
+            {{input type="checkbox" checked=emailOnMention id="emailOnMention"}}
+            E-mail me when someone <strong>mentions me</strong>
+          </label>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <label for="emailOnMention">
+            {{input type="checkbox" checked=emailOnTag id="emailOnTag"}}
+            E-mail me when someone <strong>tags me</strong>
+          </label>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <label for="doNotSendEmail">
+            {{input type="checkbox" checked=doNotSendEmail id="doNotSendEmail"}}
+            <strong>Do not</strong> e-mail me
+          </label>
+        </div>
+      </div>
+
+
+      <div class="control-actions action-bar sticky">
+        <input type="submit" class="btn btn-primary btn-rounded" {{bind-attr value=submitText disabled=submitDisabled}} />
+      </div>
+    </form>
+  </div>
+
+</div>

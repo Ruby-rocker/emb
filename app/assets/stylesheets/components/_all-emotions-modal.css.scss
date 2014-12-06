@@ -1,0 +1,95 @@
+.all-emotions-modal {
+
+}
+
+.all-emotions-modal__emotions-list {
+  border-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #666;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+  }
+
+  li {
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+    font-size: 25px;
+
+    &.selected {
+      background-color: $color-brand;
+    }
+
+    &:first-of-type {
+      border-top-left-radius: 5px;
+    }
+  }
+
+  a {
+    color: white;
+  }
+}
+
+.all-emotions-modal__emotions-list__count {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  min-width: 15px;
+  padding: 0 4px;
+  border-radius: 100px;
+  background: $color-brand;
+  color: $white;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.5em;
+}
+.selected .all-emotions-modal__emotions-list__count {
+  background: #666;
+}
+
+
+.all-emotions-modal__users-list {
+  padding: 10px 0 0 10px;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: white;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+  }
+
+  li {
+    position: relative;
+    float: left;
+    width: 104px;
+    height: 104px;
+    margin: 0 10px 10px 0;
+    padding: 0;
+    font-size: 14px;
+  }
+}
+
+.all-emotions-modal__users-list__name {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  padding: 4px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  text-align: center;
+}
+
+.all-emotions-modal__users-list__count {
+  background-color: $color-brand;
+  color: white;
+}

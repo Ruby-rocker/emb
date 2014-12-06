@@ -1,0 +1,44 @@
+<div class="container clearfix">
+
+  <div class="message-list">
+    <header>
+      {{#link-to 'messages.new' (query-params recipientIds='') class="btn btn-primary btn-rounded"}}
+        <i class="icon-write2"></i>
+      {{/link-to}}
+      {{input type="search" value=searchQuery class="pull-right"}}
+    </header>
+
+    {{#if isSearching}}
+      <p class="loading">Searching...</p>
+    {{/if}}
+
+    {{#unless isSearching}}
+      <ul>
+        {{#each arrangedContent itemController="conversationListItem"}}
+          <li {{bind-attr class="unread"}}>
+            {{#link-to 'conversation' this class="message-preview"}}
+              {{avatar displayUser.profile size="64"}}
+              <div class="message-preview-meta">
+                <div class="name">{{userNamesList}}</div>
+                <div class="time">
+                  <i class="ss-clock"></i>
+                  {{timeago value=updatedAt}}
+                </div>
+                <p>{{previewText}}</p>
+              </div>
+            {{/link-to}}
+          </li>
+        {{else}}
+          {{#if searchQuery}}
+            <li>No matching conversations found</li>
+          {{else}}
+            <li>You have no messages yet.</li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    {{/unless}}
+  </div>
+
+  {{outlet}}
+
+</div>

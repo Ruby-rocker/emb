@@ -1,0 +1,21 @@
+<div class="post-meta">
+  <div class="post-details">
+    <div class="post-actions">
+      <div class="post-date">{{createdAt}}</div>
+      <ul class="nav inline pull-right">
+        <li>{{universal-like-button likeable=model position='bottom'}}</li>
+        <li>
+          {{#link-to 'user_feed.posts' user.username flashbackDate class="ss-flash"}}
+            <div class="hidden">Flashback</div>
+          {{/link-to}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="comments">
+    {{render "comment.list" comments}}
+    {{render "comment/new" model}}
+  </div>
+
+</div>

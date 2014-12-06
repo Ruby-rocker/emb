@@ -1,0 +1,42 @@
+<div class="modal modal-full" id="login-signup">
+  <div class="modal-close">
+    <a href="#" {{action cancel}}><i class="ss-delete"></i></a>
+  </div>
+
+  <div class="signup-container step1">
+    <h1>Step 1 - Twitter</h1>
+    <div class="social-signin">
+      <p>Almost there! We just need to confirm a couple of details...</p>
+    </div>
+    <form class="form" {{action completeSignup on="submit"}}>
+      <div {{bind-attr class=":control-group emailValidation.ok:success emailValidation.failed:error"}}>
+        <label class="control-label hidden">Email</label>
+        <div class="controls">
+          {{input type="text" value=email placeholder="Email:"}}
+          {{view Yostalgia.InputTipView validationBinding="emailValidation"}}
+        </div>
+      </div>
+      <div {{bind-attr class=":control-group fullnameValidation.ok:success fullnameValidation.failed:error"}}>
+        <label class="control-label hidden">Name</label>
+        <div class="controls">
+          {{input type="text" value=fullName placeholder="Full name:"}}
+          {{view Yostalgia.InputTipView validationBinding="fullnameValidation"}}
+        </div>
+      </div>
+      <div {{bind-attr class=":control-group usernameValidation.ok:success usernameValidation.failed:error"}}>
+        <label class="control-label hidden">Username</label>
+        <div class="controls">
+          {{input type="text" value=username placeholder="Username:"}}
+          {{view Yostalgia.InputTipView validationBinding="usernameValidation"}}
+        </div>
+      </div>
+      <div class="control-actions">
+        {{input type="submit" value="Next Step" class="btn btn-primary btn-rounded" disabled=submitDisabled }}
+        {{#if isSaving}}
+          <span class="loading">saving...</span>
+        {{/if}}
+      </div>
+    </form>
+  </div>
+
+</div>

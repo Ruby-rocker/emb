@@ -1,0 +1,42 @@
+.media-boxes {
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+  ul.nav.inline {
+    overflow: hidden;
+    height: 100px;
+    > li {
+      width: 100px;
+      height: 100px;
+      background: $color-brand;
+      i {
+        position: absolute;
+        top: 50%;
+        display: block;
+        width: 100%;
+        height: 0px;
+        margin-top: -25px;
+        text-align: center;
+        font-size: 60px;
+        line-height: 0em;
+      }
+    }
+    a {
+      display: block;
+      width: 100px;
+      height: 100px;
+    }
+    a > img:hover {
+      opacity: 0.8;
+    }
+    > li:first-child {
+      a {
+        padding: 0;
+        border-bottom: 0;
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

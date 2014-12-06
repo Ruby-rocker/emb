@@ -1,0 +1,65 @@
+{{#link-to 'user' user.username class="slide-link left"}}
+  <i class="icon-arrow-left"></i>
+{{/link-to}}
+
+
+<div class="header-bar">
+  <div class="avatar">
+    {{#link-to 'user' user}}
+      {{avatar user.profile size=40}}
+    {{/link-to}}
+  </div>
+  <div class="name">
+    {{#link-to 'user' user}}
+      {{user.profile.fullName}}
+    {{/link-to}}
+  </div>
+</div>
+
+<div class="friends">
+
+  <div class="friends-count box box-count">
+    <i class="icon-photo"></i>
+    <div class="box-count__number">{{totalPhotos}} {{pluralize 'Photo' totalPhotos}}</div>
+  </div>
+
+
+  {{#if totalProfilePhotos}}
+    <div class="friend box">
+      {{#link-to 'profile_photos' user}}
+        {{avatar user.profile size=220}}
+      {{/link-to}}
+      </a>
+      <div class="name">
+        <a href="#">{{totalProfilePhotos}} {{pluralize 'Profile Photo' totalProfilePhotos}}</a>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if totalCoverPhotos}}
+    <div class="friend box">
+      {{#link-to 'cover_photos' user}}
+        {{attachmentImage user.profile.coverPhoto width=220 height=220 fit='crop'}}
+      {{/link-to}}
+      </a>
+      <div class="name">
+        <a href="#">{{totalCoverPhotos}} {{pluralize 'Cover Photo' totalCoverPhotos}}</a>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#each model}}
+    <div class="friend box">
+      {{#if attachable.hasMediaGroup}}
+        {{#link-to 'post.attachment' attachable this}}
+          {{attachmentImage this width=220 height=220 fit='crop'}}
+        {{/link-to}}
+      {{else}}
+        {{#link-to 'post' attachable}}
+          {{attachmentImage this width=220 height=220 fit='crop'}}
+        {{/link-to}}
+      {{/if}}
+    </div>
+  {{/each}}
+
+</div>

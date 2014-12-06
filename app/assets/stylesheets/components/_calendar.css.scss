@@ -1,0 +1,156 @@
+.datepicker-button, .datepicker-input {
+  position: relative;
+  cursor: pointer;
+
+  .calendar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2000;
+    display: none;
+    width: 250px;
+    height: 250px;
+  }
+}
+.calendar-container {
+  width: 250px;
+  height: 250px;
+}
+.calendar, .calendar .days, .calendar .months, .calendar .years {
+  width: 100%;
+  height: 100%;
+}
+.cal-header {
+  position: relative;
+  height: 15%;
+  border: 1px solid darken($color-brand, 10%);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #ccc;
+  background: $color-brand;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 0 darken($color-brand, 10%);
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 36px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+  }
+}
+.cal-prev-button {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  line-height: 40px;
+}
+.cal-next-button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  line-height: 40px;
+}
+.cal-header-date {
+
+}
+.cal-header-month {
+  margin-right: 4px;
+  cursor: pointer;
+}
+.cal-header-year {
+  margin-left: 4px;
+  cursor: pointer;
+}
+.cal-body {
+  position: relative;
+  display: table;
+  width: 100%;
+  // height: 72%;
+  border: 1px solid darken(#e5ddd4, 10%);
+  border-collapse: collapse;
+  background: #e5ddd4;
+}
+.cal-row {
+  display: table-row;
+  width: 100%;
+  // height: 20%;
+  height: 33px;
+}
+.cal-row:last-of-type > div {
+  border-bottom: none;
+}
+.cal-row > div {
+  position: relative;
+  display: table-cell;
+  overflow: hidden;
+  border: 1px solid darken(#e5ddd4, 10%);
+  // border-bottom: 1px solid darken(#e5ddd4, 10%);
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+
+  .cal-date {
+    color: black;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+.cal-row > div:last-of-type {
+  border-right: none;
+}
+.ie9 .cal-row > div {
+  width: 14.2%; // IE9 rounds up
+}
+.cal-row > div.cal-cell-selected {
+  @include box-shadow(inset 1px 1px 0 darken(#e5ddd4, 20%));
+  border: 1px solid darken(#e5ddd4, 20%);
+  background: darken(#e5ddd4, 10%);
+}
+.cal-row > div.cal-cell-today {
+  .cal-date {
+    color: #AA0000;
+    font-weight: bold;
+  }
+}
+.cal-row > div.cal-cell-weekday {
+
+}
+.cal-row > div.cal-cell-with-event {
+
+}
+.cal-row > div.cal-cell-empty {
+  background: lighten(#e5ddd4, 5%);
+  cursor: default;
+}
+.cal-row > div.cal-cell-disabled {
+
+}
+.years {
+  .cal-row:first-of-type > div:first-of-type,
+  .cal-row:last-of-type > div:last-of-type {
+    .cal-date {
+      opacity: 0.3;
+    }
+  }
+}
+.cal-footer {
+  clear: both;
+  height: 13%;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: darken(#e5ddd4, 10%);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: lighten(#e5ddd4, 5%);
+  text-align: center;
+  a {
+    color: darken($color-brand, 10%);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}

@@ -1,0 +1,57 @@
+<h3>Mentions input (bottom)</h3>
+{{mentions-input
+  value=mentionsOneText
+  searchMethod='searchUsers'
+  searchResults=userSearchResults
+  placeholder="Use @ to mention friends"}}
+
+<p>{{mentionsText}}</p>
+
+<h3>Mentions input (top)</h3>
+{{mentions-input
+  value=mentionsTwoText
+  searchMethod='searchUsers'
+  searchResults=userSearchResults
+  placeholder="Use @ to mention friends"
+  dropdownPosition="top"}}
+
+<p>{{mentionsText}}</p>
+
+<h3>Token input</h3>
+{{token-input
+    selected=selectedUsers
+    searchMethod='searchUsers'
+    searchResults=userSearchResults
+    tokenProperty='profile.fullName'
+    resultProperty='profile.fullName'}}
+
+<h3>User Token input</h3>
+{{user-token-input
+    selected=selectedUsers
+    searchMethod='searchUsers'
+    searchResults=userSearchResults
+    tokenProperty='profile.fullName'
+    resultProperty='profile.fullName'}}
+
+<h1>Calendar Test</h1>
+
+<p>Selected date: {{selectedDate}}</p>
+
+<h3>Standard calendar </h3>
+<div class="calendar-container" style="margin: 20px">
+  {{yostalgia-calendar date=selectedDate}}
+</div>
+
+<hr>
+
+<h3>Date picker input</h3>
+{{date-picker-input date=selectedDate}}
+
+<hr>
+
+<h3>Date picker button</h3>
+<div style="margin: 20px">
+  {{#date-picker-button date=selectedDate class="btn btn-rounded"}}
+    <i class="icon-calendar"></i>
+  {{/date-picker-button}}
+</div>

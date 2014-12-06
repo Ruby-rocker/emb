@@ -1,0 +1,11 @@
+<div class="mentions-input__overlay">{{overlayContent}}</div>
+{{mentions-input-textarea}}
+{{#if autoCompleteIsVisible}}
+  <div class="mentions-input__autocomplete">
+    <ul class="mentions-input__autocomplete__list">
+      {{#each autoCompleteItems}}
+        {{mentions-input-auto-complete-item item=this}}
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

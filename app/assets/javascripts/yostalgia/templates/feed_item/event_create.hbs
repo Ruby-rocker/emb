@@ -1,0 +1,46 @@
+{{#if displayUser}}
+  {{#link-to 'user' event.user.username class="posted-by"}}
+    <div class="posted-by-image">
+      {{avatar event.user.profile size="42"}}
+    </div>
+    <div class="posted-by-name">{{event.user.profile.fullName}}</div>
+  {{/link-to}}
+{{/if}}
+
+{{#link-to 'event' event class="post-title"}}
+  {{event.title}}
+{{/link-to}}
+
+{{#link-to 'event' event}}
+  {{attachmentImage event.coverPhoto width="280"}}
+{{/link-to}}
+
+{{#if event.location}}
+  <div class="event-location">
+  	<i class="icon-location"></i> {{event.location}}
+  </div>
+{{/if}}
+
+{{#if event.description}}
+  <div class="post-description">
+    {{truncatedDescription}}
+  	{{#if isTruncated}}
+      {{#link-to 'event' event class="read-more"}}read more{{/link-to}}
+    {{/if}}
+  </div>
+{{/if}}
+
+<div class="post-actions">
+	<div class="post-date">
+		{{simpleDateTime event.startTime}}
+    -
+    {{simpleDateTime event.endTime}}
+	</div>
+  <ul class="nav inline pull-right">
+    <li>
+      {{#link-to 'user_feed.posts' event.user.username flashbackDate class="ss-flash"}}
+        <div class="hidden">flashback</div>
+      {{/link-to}}
+    </li>
+  </ul>
+</div>

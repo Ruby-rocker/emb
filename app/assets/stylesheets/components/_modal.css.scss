@@ -1,0 +1,79 @@
+.modal {
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background: $white;
+	background: rgba(0,0,0,0.8);
+	color: $white;
+	text-shadow: $textShadow;
+}
+.modal-over-nav {
+	z-index: 999999999999;
+}
+
+.modal-full {
+	top: 0;
+	z-index: 1001;
+	margin-top: 0;
+	padding: 20px;
+	.modal-close {
+		padding: 32px 20px;
+	}
+}
+.modal-inner {
+	padding-top: 74px;
+	.modal-close {
+		margin-top: 74px;
+	}
+}
+
+.modal-left {
+	float: left;
+	width: 50%;
+}
+.modal-right {
+	float: right;
+	width: 50%;
+}
+.modal > .modal-white {
+	position: relative;
+	height: 100%;
+	background: $white;
+	color: $black;
+	text-shadow: $textShadowReset;
+	.modal-close a {
+		color: $black;
+	}
+}
+
+.modal-close {
+	position: absolute;
+	top: 0;
+	right: 0px;
+	z-index: 8000;
+	padding: 14px 10px;
+	text-align: right;
+	font-size: 22px;
+	a {
+		display: block;
+		width: 100%;
+		color: $white;
+		padding: 10px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+.modal-content {
+	overflow: scroll;
+	height: 100%;
+	p {
+		font-size: 18px;
+	}
+}
+
+.icon-cancel.dark {
+  color: #666;
+}
